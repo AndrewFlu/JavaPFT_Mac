@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="243.0" y="543.0">ru.andrew.pft.addressbook.tests.GroupCreationTest</node>
+    <node x="488.0" y="543.0">ru.andrew.pft.addressbook.tests.ContactCreationTest</node>
+    <node x="0.0" y="543.0">ru.andrew.pft.addressbook.tests.GroupDeletionTest</node>
+    <node x="215.0" y="0.0">ru.andrew.pft.addressbook.tests.TestBase</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ru.andrew.pft.addressbook.tests.ContactCreationTest" target="ru.andrew.pft.addressbook.tests.TestBase">
+      <point x="-58.75" y="-26.0" />
+      <point x="546.75" y="523.0" />
+      <point x="425.75" y="523.0" />
+      <point x="70.25" y="246.5" />
+    </edge>
+    <edge source="ru.andrew.pft.addressbook.tests.GroupDeletionTest" target="ru.andrew.pft.addressbook.tests.TestBase">
+      <point x="-55.75" y="-26.0" />
+      <point x="55.75" y="513.0" />
+      <point x="238.41666666666666" y="513.0" />
+      <point x="-117.08333333333334" y="246.5" />
+    </edge>
+    <edge source="ru.andrew.pft.addressbook.tests.GroupCreationTest" target="ru.andrew.pft.addressbook.tests.TestBase">
+      <point x="-56.25" y="-26.0" />
+      <point x="299.25" y="523.0" />
+      <point x="332.08333333333337" y="523.0" />
+      <point x="-23.41666666666663" y="246.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.3698587468302514" x="384.6053810977548" y="274.64576514084774" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
