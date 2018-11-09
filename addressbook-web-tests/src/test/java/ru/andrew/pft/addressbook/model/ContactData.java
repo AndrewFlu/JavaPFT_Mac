@@ -1,4 +1,4 @@
-package ru.andrew.pft.addressbook.tests;
+package ru.andrew.pft.addressbook.model;
 
 public class ContactData {
   private final String contactName;
