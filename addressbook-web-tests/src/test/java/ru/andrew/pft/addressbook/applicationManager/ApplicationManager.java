@@ -5,13 +5,13 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.andrew.pft.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
 
   private WebDriver driver;
+  private ContactHelper contactHelper;
   private GroupHelper groupHelper;
 
   public void init() {
@@ -20,6 +20,7 @@ public class ApplicationManager {
 
     driver = new FirefoxDriver();
     groupHelper = new GroupHelper(driver);
+    contactHelper = new ContactHelper(driver);
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
     driver.get("http://localhost/addressbook/index.php");
@@ -43,35 +44,8 @@ public class ApplicationManager {
     driver.findElement(By.linkText("home")).click();
   }
 
-  public void returnToHomePage() {
-    driver.findElement(By.linkText("home page")).click();
-  }
-
   public void gotoGroupPage() {
     driver.findElement(By.linkText("groups")).click();
-  }
-
-  public void submitContactCreation() {
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
-  }
-
-  public void fillContactForm(ContactData contactData) {
-    driver.findElement(By.name("firstname")).click();
-    driver.findElement(By.name("firstname")).clear();
-    driver.findElement(By.name("firstname")).sendKeys(contactData.getContactName());
-    driver.findElement(By.name("lastname")).click();
-    driver.findElement(By.name("lastname")).clear();
-    driver.findElement(By.name("lastname")).sendKeys(contactData.getLastContactName());
-    driver.findElement(By.name("mobile")).click();
-    driver.findElement(By.name("mobile")).clear();
-    driver.findElement(By.name("mobile")).sendKeys(contactData.getMobilePhone());
-    driver.findElement(By.name("email")).click();
-    driver.findElement(By.name("email")).clear();
-    driver.findElement(By.name("email")).sendKeys(contactData.getEmail1());
-  }
-
-  public void initContactCreation() {
-    driver.findElement(By.linkText("add new")).click();
   }
 
   public boolean isElementPresent(By by) {
@@ -94,5 +68,9 @@ public class ApplicationManager {
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
+  }
+
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 }
