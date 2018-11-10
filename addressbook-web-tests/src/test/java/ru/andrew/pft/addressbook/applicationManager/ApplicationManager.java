@@ -4,18 +4,20 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.andrew.pft.addressbook.model.GroupData;
 import ru.andrew.pft.addressbook.model.ContactData;
+
 import java.util.concurrent.TimeUnit;
+import static org.testng.Assert.fail;
 
 public class ApplicationManager {
 
   private WebDriver driver;
+  private boolean acceptNextAlert = true;
+  private StringBuffer verificationErrors = new StringBuffer();
 
   public void init() {
     String projectPath = System.getProperty("user.dir");
     System.setProperty("webdriver.gecko.driver", projectPath + "/drivers/Firexox/geckodriver");
-
     driver = new FirefoxDriver();
-
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     driver.get("http://localhost/addressbook/index.php");
     login("admin", "secret");
@@ -23,6 +25,10 @@ public class ApplicationManager {
 
   public void stop() {
     driver.quit();
+    String verificationErrorString = verificationErrors.toString();
+    if (!"".equals(verificationErrorString)) {
+      fail(verificationErrorString);
+    }
   }
 
   public void login(String username, String password) {
@@ -32,6 +38,10 @@ public class ApplicationManager {
     driver.findElement(By.name("pass")).clear();
     driver.findElement(By.name("pass")).sendKeys(password);
     driver.findElement(By.id("LoginForm")).submit();
+  }
+
+  public void returnToGroupPage() {
+    driver.findElement(By.linkText("group page")).click();
   }
 
   public void submitGroupCreation() {
@@ -54,20 +64,12 @@ public class ApplicationManager {
     driver.findElement(By.name("new")).click();
   }
 
-  public void gotoHomePage() {
-    driver.findElement(By.linkText("home")).click();
-  }
-
-  public void returnToHomePage() {
-    driver.findElement(By.linkText("home page")).click();
-  }
-
   public void gotoGroupPage() {
     driver.findElement(By.linkText("groups")).click();
   }
 
-  public void returnToGroupPage() {
-    driver.findElement(By.linkText("group page")).click();
+  public void returnToHomePage() {
+    driver.findElement(By.linkText("home page")).click();
   }
 
   public void submitContactCreation() {
@@ -93,12 +95,8 @@ public class ApplicationManager {
     driver.findElement(By.linkText("add new")).click();
   }
 
-  public void deleteSelectedGroups() {
-    driver.findElement(By.name("delete")).click();
-  }
-
-  public void selectGroup() {
-    driver.findElement(By.name("selected[]")).click();
+  public void gotoHomePage() {
+    driver.findElement(By.linkText("home")).click();
   }
 
   public boolean isElementPresent(By by) {
@@ -117,5 +115,28 @@ public class ApplicationManager {
     } catch (NoAlertPresentException e) {
       return false;
     }
+  }
+
+  public String closeAlertAndGetItsText() {
+    try {
+      Alert alert = driver.switchTo().alert();
+      String alertText = alert.getText();
+      if (acceptNextAlert) {
+        alert.accept();
+      } else {
+        alert.dismiss();
+      }
+      return alertText;
+    } finally {
+      acceptNextAlert = true;
+    }
+  }
+
+  public void deleteSelectedGroups() {
+    driver.findElement(By.name("delete")).click();
+  }
+
+  public void selectGroup() {
+    driver.findElement(By.name("selected[]")).click();
   }
 }
