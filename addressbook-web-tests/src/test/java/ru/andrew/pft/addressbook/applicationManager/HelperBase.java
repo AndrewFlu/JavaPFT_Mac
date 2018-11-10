@@ -23,7 +23,7 @@ public class HelperBase {
     driver.findElement(locator).sendKeys(text);
   }
 
-  protected void submit(By locator) {
+  protected void submitForm(By locator) {
     driver.findElement(locator).submit();
   }
 
@@ -43,5 +43,9 @@ public class HelperBase {
     } catch (NoAlertPresentException e) {
       return false;
     }
+  }
+
+  protected void submitAlert() {
+    driver.switchTo().alert().accept();
   }
 }

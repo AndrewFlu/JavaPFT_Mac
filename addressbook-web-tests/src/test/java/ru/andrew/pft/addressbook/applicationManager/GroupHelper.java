@@ -11,7 +11,7 @@ public class GroupHelper extends HelperBase{
   }
 
   public void submitGroupCreation() {
-    click(By.name("submit"));
+    click(By.name("submitForm"));
   }
 
   public void fillGroupForm(GroupData groupData) {
