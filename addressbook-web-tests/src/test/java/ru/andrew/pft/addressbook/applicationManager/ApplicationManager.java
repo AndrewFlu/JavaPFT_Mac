@@ -13,40 +13,27 @@ public class ApplicationManager {
   private WebDriver driver;
   private ContactHelper contactHelper;
   private GroupHelper groupHelper;
+  private SessionHelper sessionHelper;
+  private NavigationHelper navigationHelper;
 
   public void init() {
+
     String projectPath = System.getProperty("user.dir");
     System.setProperty("webdriver.gecko.driver", projectPath + "/drivers/Firexox/geckodriver");
-
     driver = new FirefoxDriver();
     groupHelper = new GroupHelper(driver);
     contactHelper = new ContactHelper(driver);
+    sessionHelper = new SessionHelper(driver);
+    navigationHelper = new NavigationHelper(driver);
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
     driver.get("http://localhost/addressbook/index.php");
-    login("admin", "secret");
+    sessionHelper.login("admin", "secret");
   }
 
   public void stop() {
     driver.quit();
   }
 
-  public void login(String username, String password) {
-    driver.findElement(By.name("user")).click();
-    driver.findElement(By.name("user")).clear();
-    driver.findElement(By.name("user")).sendKeys(username);
-    driver.findElement(By.name("pass")).clear();
-    driver.findElement(By.name("pass")).sendKeys(password);
-    driver.findElement(By.id("LoginForm")).submit();
-  }
-
-  public void gotoHomePage() {
-    driver.findElement(By.linkText("home")).click();
-  }
-
-  public void gotoGroupPage() {
-    driver.findElement(By.linkText("groups")).click();
-  }
 
   public boolean isElementPresent(By by) {
     try {
@@ -72,5 +59,9 @@ public class ApplicationManager {
 
   public ContactHelper getContactHelper() {
     return contactHelper;
+  }
+
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
   }
 }
