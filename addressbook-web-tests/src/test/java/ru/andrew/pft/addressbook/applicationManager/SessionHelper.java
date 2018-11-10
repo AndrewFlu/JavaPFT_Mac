@@ -3,19 +3,15 @@ package ru.andrew.pft.addressbook.applicationManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SessionHelper {
+public class SessionHelper extends HelperBase {
 
-  private WebDriver driver;
   public SessionHelper(WebDriver driver){
-    this.driver = driver;
-  };
-  public void login(String username, String password) {
-    driver.findElement(By.name("user")).click();
-    driver.findElement(By.name("user")).clear();
-    driver.findElement(By.name("user")).sendKeys(username);
-    driver.findElement(By.name("pass")).clear();
-    driver.findElement(By.name("pass")).sendKeys(password);
-    driver.findElement(By.id("LoginForm")).submit();
+    super(driver);
   }
 
+  public void login(String username, String password) {
+    type(By.name("user"), username);
+    type(By.name("pass"), password);
+    submit(By.id("LoginForm"));
+  }
 }

@@ -4,37 +4,28 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.andrew.pft.addressbook.model.ContactData;
 
-public class ContactHelper {
-  private WebDriver driver;
+public class ContactHelper extends HelperBase {
 
   public ContactHelper(WebDriver driver) {
-    this.driver = driver;
+    super(driver);
   }
 
   public void returnToHomePage() {
-    driver.findElement(By.linkText("home page")).click();
+    click(By.linkText("home page"));
   }
 
   public void submitContactCreation() {
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
+    click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]"));
   }
 
   public void fillContactForm(ContactData contactData) {
-    driver.findElement(By.name("firstname")).click();
-    driver.findElement(By.name("firstname")).clear();
-    driver.findElement(By.name("firstname")).sendKeys(contactData.getContactName());
-    driver.findElement(By.name("lastname")).click();
-    driver.findElement(By.name("lastname")).clear();
-    driver.findElement(By.name("lastname")).sendKeys(contactData.getLastContactName());
-    driver.findElement(By.name("mobile")).click();
-    driver.findElement(By.name("mobile")).clear();
-    driver.findElement(By.name("mobile")).sendKeys(contactData.getMobilePhone());
-    driver.findElement(By.name("email")).click();
-    driver.findElement(By.name("email")).clear();
-    driver.findElement(By.name("email")).sendKeys(contactData.getEmail1());
+    type(By.name("firstname"), contactData.getContactName());
+    type(By.name("lastname"), contactData.getLastContactName());
+    type(By.name("mobile"), contactData.getMobilePhone());
+    type(By.name("email"), contactData.getEmail1());
   }
 
   public void initContactCreation() {
-    driver.findElement(By.linkText("add new")).click();
+    click(By.linkText("add new"));
   }
 }
