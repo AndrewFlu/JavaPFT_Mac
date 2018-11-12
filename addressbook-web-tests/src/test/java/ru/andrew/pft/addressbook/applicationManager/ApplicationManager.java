@@ -1,13 +1,9 @@
 package ru.andrew.pft.addressbook.applicationManager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -29,15 +25,16 @@ public class ApplicationManager {
 
   public void init() {
 
-    if (browser == "firefox"){
+    if (browser.equals("firefox")){
       System.setProperty("webdriver.gecko.driver", projectPath + "/drivers/firefox/geckodriver");
       driver = new FirefoxDriver();
-    } else if (browser == "chrome"){
+    } else if (browser.equals("chrome")){
       System.setProperty("webdriver.chrome.driver", projectPath + "/drivers/chrome/chromedriver");
       driver = new ChromeDriver();
-    } else if (browser == "safari"){
+    } else if (browser.equals("safari")){
       driver = new SafariDriver();
-    } else if (browser == "iexplore"){
+    } else if (browser.equals("iexplore")){
+      System.setProperty("webdriver.ie.driver", projectPath + "/drivers/ie/IEDriverServer.exe");
       driver = new InternetExplorerDriver();
     }
 
