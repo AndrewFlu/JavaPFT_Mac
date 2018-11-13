@@ -1,13 +1,10 @@
 package ru.andrew.pft.addressbook.applicationManager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
 public class HelperBase {
 
-  private WebDriver driver;
+  protected WebDriver driver;
 
   public HelperBase(WebDriver driver) {
     this.driver = driver;
@@ -32,14 +29,6 @@ public class HelperBase {
     driver.findElement(locator).submit();
   }
 
-  public boolean isElementPresent(By locator) {
-    try {
-      driver.findElement(locator);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
-  }
 
   public boolean isAlertPresent() {
     try {
@@ -52,5 +41,14 @@ public class HelperBase {
 
   protected void submitAlert() {
     driver.switchTo().alert().accept();
+  }
+
+  protected boolean isElementPresent(By locator) {
+    try {
+      driver.findElement(locator);
+      return true;
+    } catch (NoSuchElementException e) {
+      return false;
+    }
   }
 }

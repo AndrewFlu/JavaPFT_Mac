@@ -42,7 +42,7 @@ public class ApplicationManager {
     contactHelper = new ContactHelper(driver);
     sessionHelper = new SessionHelper(driver);
     navigationHelper = new NavigationHelper(driver);
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     driver.get("http://localhost/addressbook/index.php");
     sessionHelper.login("admin", "secret");
   }
