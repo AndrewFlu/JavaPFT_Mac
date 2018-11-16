@@ -1,7 +1,6 @@
 package ru.andrew.pft.addressbook.applicationManager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -27,7 +26,9 @@ public class ContactHelper extends HelperBase {
     type(By.name("mobile"), contactData.getMobilePhone());
     type(By.name("email"), contactData.getEmail1());
     if (creation){
+      if (contactData.getGroup() != null){
       new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -57,4 +58,14 @@ public class ContactHelper extends HelperBase {
     submitAlert();
   }
 
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
+  public void createContact(ContactData contactData) {
+    initContactCreation();
+    fillContactForm((contactData), true);
+    submitContactCreation();
+    returnToHomePage();
+  }
 }
