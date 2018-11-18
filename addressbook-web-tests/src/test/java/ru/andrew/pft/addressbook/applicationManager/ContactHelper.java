@@ -77,30 +77,16 @@ public class ContactHelper extends HelperBase {
     return driver.findElements(By.name("selected[]")).size();
   }
 
-//  public List<ContactData> getContactList() {
-//    List<WebElement> elements = driver.findElements(By.xpath("//tbody//tr[@name=\"entry\"]"));
-//    List<ContactData> contactData = new ArrayList<>();
-//    for (WebElement element : elements){
-//      contactData.add(new ContactData(
-//              element.findElement(By.xpath("//td[3]")).getText(), // firstName
-//              element.findElement(By.xpath("//td[2]")).getText(),   // lastName
-//              element.findElement(By.xpath("//td[6]")).getText(), // mobilePhone
-//              element.findElement(By.xpath("//td[5]")).getText(), // email_1
-//              null  // group
-//      ));
-//    }
-//    return contactData;
-//  }
-
+  // метод работает по css-селектору
   public List<ContactData> getContactList() {
-    List<WebElement> elements = driver.findElements(By.xpath("//tbody//tr[@name='entry']/td[3]"));
+    List<WebElement> elements = driver.findElements(By.cssSelector("tr[name=entry]"));
     List<ContactData> contactData = new ArrayList<>();
     for (WebElement element : elements){
       contactData.add(new ContactData(
-              element.getText(), // firstName
-              null,
-              null,
-              null,
+              element.findElement(By.cssSelector("td:nth-of-type(3)")).getText(), // firstName
+              element.findElement(By.cssSelector("td:nth-of-type(2)")).getText(),   // lastName
+              element.findElement(By.cssSelector("td:nth-of-type(6)")).getText(), // mobilePhone
+              element.findElement(By.cssSelector("td:nth-of-type(5)")).getText(), // email_1
               null  // group
       ));
     }
