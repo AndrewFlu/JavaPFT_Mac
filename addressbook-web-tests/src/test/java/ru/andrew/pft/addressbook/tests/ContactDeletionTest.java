@@ -14,7 +14,7 @@ public class ContactDeletionTest extends TestBase {
               "+7(987) 777-12-55", "email@yandex.com", null));
     }
     int before = app.getContactHelper().getContactsCount();
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(before - 1);
     app.getContactHelper().initContactDeletion();
     app.getContactHelper().submitContactDeletion();
     app.getNavigationHelper().gotoHomePage();

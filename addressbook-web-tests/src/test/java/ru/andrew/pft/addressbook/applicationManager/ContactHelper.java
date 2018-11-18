@@ -38,16 +38,16 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void initContactModification() {
-    click(By.xpath("//table[@id='maintable']//tr[2]//td[8]/a"));
+  public void initContactModification(int index) {
+    driver.findElements(By.cssSelector("img[title=\"Edit\"]")).get(index).click();
   }
 
   public void submitContactModification() {
     click(By.name("update"));
   }
 
-  public void selectContact() {
-    click(By.name("selected[]"));
+  public void selectContact(int index) {
+    driver.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void initContactDeletion() {

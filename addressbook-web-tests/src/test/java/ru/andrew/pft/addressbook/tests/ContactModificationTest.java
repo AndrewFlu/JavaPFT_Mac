@@ -14,7 +14,7 @@ public class ContactModificationTest extends TestBase {
               "+7(987) 777-12-55", "email@yandex.com", null));
     }
     int before = app.getContactHelper().getContactsCount();
-    app.getContactHelper().initContactModification();
+    app.getContactHelper().initContactModification(before - 1);
     app.getContactHelper().fillContactForm(new ContactData(
             "ModificationName", "ModificationLastName",
             "+7(000) 111-11-11", "modifactionemail@yandex.ru", null), false);
