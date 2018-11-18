@@ -2,9 +2,13 @@ package ru.andrew.pft.addressbook.applicationManager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.andrew.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
@@ -71,5 +75,35 @@ public class ContactHelper extends HelperBase {
 
   public int getContactsCount() {
     return driver.findElements(By.name("selected[]")).size();
+  }
+
+//  public List<ContactData> getContactList() {
+//    List<WebElement> elements = driver.findElements(By.xpath("//tbody//tr[@name=\"entry\"]"));
+//    List<ContactData> contactData = new ArrayList<>();
+//    for (WebElement element : elements){
+//      contactData.add(new ContactData(
+//              element.findElement(By.xpath("//td[3]")).getText(), // firstName
+//              element.findElement(By.xpath("//td[2]")).getText(),   // lastName
+//              element.findElement(By.xpath("//td[6]")).getText(), // mobilePhone
+//              element.findElement(By.xpath("//td[5]")).getText(), // email_1
+//              null  // group
+//      ));
+//    }
+//    return contactData;
+//  }
+
+  public List<ContactData> getContactList() {
+    List<WebElement> elements = driver.findElements(By.xpath("//tbody//tr[@name='entry']/td[3]"));
+    List<ContactData> contactData = new ArrayList<>();
+    for (WebElement element : elements){
+      contactData.add(new ContactData(
+              element.getText(), // firstName
+              null,
+              null,
+              null,
+              null  // group
+      ));
+    }
+    return contactData;
   }
 }

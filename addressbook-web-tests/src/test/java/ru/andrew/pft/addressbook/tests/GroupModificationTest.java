@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.andrew.pft.addressbook.model.GroupData;
 
+import java.util.List;
+
 public class GroupModificationTest extends TestBase {
   @Test
   public void testGroupModification(){
@@ -11,13 +13,13 @@ public class GroupModificationTest extends TestBase {
     if (! app.getGroupHelper().isThereAGroup()){
       app.getGroupHelper().createGroup(new GroupData("GroupName", null, null));
     }
-    int before = app.getGroupHelper().getGroupsCount();
-    app.getGroupHelper().selectGroup(before - 1);
+    List<GroupData> before = app.getGroupHelper().getGroupList();
+    app.getGroupHelper().selectGroup(before.size() - 1);
     app.getGroupHelper().initGroupModification();
     app.getGroupHelper().fillGroupForm(new GroupData("ModificationName", "ModificationHeader", "ModificationFooter"));
     app.getGroupHelper().submitGroupModification();
     app.getGroupHelper().returnToGroupPage();
-    int after = app.getGroupHelper().getGroupsCount();
-    Assert.assertEquals(after, before);
+    List<GroupData> after = app.getGroupHelper().getGroupList();
+    Assert.assertEquals(after.size(), before.size());
   }
 }
