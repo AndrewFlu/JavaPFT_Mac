@@ -34,8 +34,6 @@ public class ContactModificationTest extends TestBase {
     before.sort(byId);
     after.sort(byId);
     Assert.assertEquals(after, before);
-
-
   }
 
 }
