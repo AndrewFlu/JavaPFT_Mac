@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.andrew.pft.addressbook.model.GroupData;
 
-import java.util.HashSet;
+import java.util.Comparator;
 import java.util.List;
 
 public class GroupCreationTest extends TestBase{
@@ -13,20 +13,16 @@ public class GroupCreationTest extends TestBase{
   public void testGroupCreation() {
     app.getNavigationHelper().gotoGroupPage();
     List<GroupData> before = app.getGroupHelper().getGroupList();
-    GroupData group = new GroupData("Group1", "GroupHeader", "GroupFooter");
+    GroupData group = new GroupData("Group2", "GroupHeader", "GroupFooter");
     app.getGroupHelper().createGroup(group);
     List<GroupData> after = app.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size() + 1);
 
-    int max = 0;
-    for (GroupData g : after){
-      if (g.getId() > max){
-        max = g.getId();
-      }
-    }
-    group.setId(max);
     before.add(group);
-    Assert.assertEquals(new HashSet<>(after), new HashSet<>(before));
+    Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(after, before);
 
   }
   @Test
@@ -38,14 +34,10 @@ public class GroupCreationTest extends TestBase{
     List<GroupData> after = app.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size() + 1);
 
-    int max = 0;
-    for (GroupData g : after){
-      if (g.getId() > max){
-        max = g.getId();
-      }
-    }
-    group.setId(max);
     before.add(group);
-    Assert.assertEquals(new HashSet<>(after), new HashSet<>(before));
+    Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(after, before);
   }
 }

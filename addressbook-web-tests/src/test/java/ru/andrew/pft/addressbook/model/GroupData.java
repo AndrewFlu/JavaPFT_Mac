@@ -5,12 +5,12 @@ import java.util.Objects;
 public class GroupData {
 
   private int id;
-
   private final String groupName;
   private final String groupHeader;
   private final String groupFooter;
+
   public GroupData(String groupName, String groupHeader, String groupFooter) {
-    this.id = 0;
+    this.id = Integer.MAX_VALUE;
     this.groupName = groupName;
     this.groupHeader = groupHeader;
     this.groupFooter = groupFooter;
@@ -56,12 +56,11 @@ public class GroupData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     GroupData groupData = (GroupData) o;
-    return id == groupData.id &&
-            Objects.equals(groupName, groupData.groupName);
+    return Objects.equals(groupName, groupData.groupName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, groupName);
+    return Objects.hash(groupName);
   }
 }
