@@ -3,27 +3,31 @@ package ru.andrew.pft.addressbook.model;
 import java.util.Objects;
 
 public class GroupData {
-  private final String id;
+
+  private int id;
 
   private final String groupName;
   private final String groupHeader;
   private final String groupFooter;
-
   public GroupData(String groupName, String groupHeader, String groupFooter) {
-    this.id = null;
+    this.id = 0;
     this.groupName = groupName;
     this.groupHeader = groupHeader;
     this.groupFooter = groupFooter;
   }
 
-  public GroupData(String id, String groupName, String groupHeader, String groupFooter) {
+  public GroupData(int id, String groupName, String groupHeader, String groupFooter) {
     this.id = id;
     this.groupName = groupName;
     this.groupHeader = groupHeader;
     this.groupFooter = groupFooter;
   }
 
-  public String getId() {
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public int getId() {
     return id;
   }
 
@@ -52,7 +56,7 @@ public class GroupData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     GroupData groupData = (GroupData) o;
-    return Objects.equals(id, groupData.id) &&
+    return id == groupData.id &&
             Objects.equals(groupName, groupData.groupName);
   }
 
