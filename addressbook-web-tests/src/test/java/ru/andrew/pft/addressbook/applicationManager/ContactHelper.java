@@ -83,6 +83,7 @@ public class ContactHelper extends HelperBase {
     List<ContactData> contactData = new ArrayList<>();
     for (WebElement element : elements){
       contactData.add(new ContactData(
+              Integer.parseInt(element.findElement(By.cssSelector("td:nth-of-type(1)>input")).getAttribute("id")),
               element.findElement(By.cssSelector("td:nth-of-type(3)")).getText(), // firstName
               element.findElement(By.cssSelector("td:nth-of-type(2)")).getText(),   // lastName
               element.findElement(By.cssSelector("td:nth-of-type(6)")).getText(), // mobilePhone
