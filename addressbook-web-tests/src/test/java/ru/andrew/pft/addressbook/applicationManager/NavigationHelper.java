@@ -9,14 +9,14 @@ public class NavigationHelper extends HelperBase {
     super(driver);
   }
 
-  public void gotoHomePage() {
+  public void homePage() {
     if (isElementPresent(By.id("maintable"))){
       return;
     }
     click(By.xpath("//a[contains(text(), 'home')]"));
   }
 
-  public void gotoGroupPage() {
+  public void groupPage() {
     if (isElementPresent(By.name("new"))
             && isElementPresent(By.tagName("h1"))
             && driver.findElement(By.xpath("//body[1]/div[1]/div[4]/h1[1]")).getText().equals("Groups")) {

@@ -66,11 +66,24 @@ public class ContactHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public void createContact(ContactData contactData) {
+  public void create(ContactData contactData) {
     initContactCreation();
     fillContactForm((contactData), true);
     submitContactCreation();
     returnToHomePage();
+  }
+
+  public void modify(int index, ContactData contact) {
+    initContactModification(index);
+    fillContactForm(contact, false);
+    submitContactModification();
+    returnToHomePage();
+  }
+
+  public void delete(int index) {
+    selectContact(index);
+    initContactDeletion();
+    submitContactDeletion();
   }
 
   public int getContactsCount() {
@@ -78,7 +91,7 @@ public class ContactHelper extends HelperBase {
   }
 
   // метод работает по css-селектору
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<WebElement> elements = driver.findElements(By.cssSelector("tr[name=entry]"));
     List<ContactData> contactData = new ArrayList<>();
     for (WebElement element : elements){
