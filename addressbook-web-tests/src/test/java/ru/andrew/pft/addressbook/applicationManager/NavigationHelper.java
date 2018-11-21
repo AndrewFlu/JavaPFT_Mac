@@ -19,7 +19,7 @@ public class NavigationHelper extends HelperBase {
   public void gotoGroupPage() {
     if (isElementPresent(By.name("new"))
             && isElementPresent(By.tagName("h1"))
-            && driver.findElement(By.tagName("h1")).getText().equals("Groups")) {
+            && driver.findElement(By.xpath("//body[1]/div[1]/div[4]/h1[1]")).getText().equals("Groups")) {
       return;
     }
     click(By.xpath("//a[contains(text(),'groups')]"));

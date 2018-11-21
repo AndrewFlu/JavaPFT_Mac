@@ -11,7 +11,7 @@ public class GroupCreationTest extends TestBase{
 
   @Test
   public void testGroupCreation() {
-    app.getNavigationHelper().gotoGroupPage();
+    app.goTo().gotoGroupPage();
     List<GroupData> before = app.getGroupHelper().getGroupList();
     GroupData group = new GroupData("Group2", "GroupHeader", "GroupFooter");
     app.getGroupHelper().createGroup(group);
@@ -27,7 +27,7 @@ public class GroupCreationTest extends TestBase{
   }
   @Test
   public void testGroupCreationWithEmptyHeaderAndFooter() {
-    app.getNavigationHelper().gotoGroupPage();
+    app.goTo().gotoGroupPage();
     List<GroupData> before = app.getGroupHelper().getGroupList();
     GroupData group = new GroupData("Group1", null, null);
     app.getGroupHelper().createGroup(group);

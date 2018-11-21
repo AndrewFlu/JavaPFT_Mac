@@ -9,9 +9,9 @@ import java.util.List;
 
 public class ContactCreationTest extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   public void testContactCreation() {
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().initContactCreation();
     ContactData contact = new ContactData("ContactName1", "LastContactName",
