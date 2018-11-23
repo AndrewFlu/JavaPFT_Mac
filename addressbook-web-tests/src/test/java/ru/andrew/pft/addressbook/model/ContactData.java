@@ -4,33 +4,41 @@ import java.util.Objects;
 
 public class ContactData {
 
-  private int id;
-  private final String contactName;
-  private final String lastContactName;
-  private final String mobilePhone;
-  private final String email1;
+  private int id = Integer.MAX_VALUE;
+  private String contactName;
+  private String lastContactName;
+  private String mobilePhone;
+  private String email1;
   private String group;
 
-  public ContactData(int id, String contactName, String lastContactName, String mobilePhone, String email1, String group) {
+  public ContactData withId(int id) {
     this.id = id;
-    this.contactName = contactName;
-    this.lastContactName = lastContactName;
-    this.mobilePhone = mobilePhone;
-    this.email1 = email1;
-    this.group = group;
+    return this;
   }
 
-  public ContactData(String contactName, String lastContactName, String mobilePhone, String email1, String group) {
-    this.id = Integer.MAX_VALUE;
+  public ContactData withName(String contactName) {
     this.contactName = contactName;
-    this.lastContactName = lastContactName;
-    this.mobilePhone = mobilePhone;
-    this.email1 = email1;
-    this.group = group;
+    return this;
   }
 
-  public void setId(int id) {
-    this.id = id;
+  public ContactData withLastName(String lastContactName) {
+    this.lastContactName = lastContactName;
+    return this;
+  }
+
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+
+  public ContactData withEmail1(String email1) {
+    this.email1 = email1;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
   }
 
   public int getId() {

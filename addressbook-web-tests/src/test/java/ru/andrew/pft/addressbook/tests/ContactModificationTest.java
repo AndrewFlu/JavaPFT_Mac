@@ -11,24 +11,23 @@ import java.util.List;
 public class ContactModificationTest extends TestBase {
 
   @BeforeMethod
-  public void ensurePreconditions(){
+  public void ensurePreconditions() {
     app.goTo().homePage();
-    if (app.contact().list().size() == 0){
-      app.contact().create(new ContactData("ContactName", "ContactSurname",
-              "+7(987) 777-12-55", "email@yandex.com", null));
+    if (app.contact().list().size() == 0) {
+      app.contact().create(new ContactData()
+              .withName("ContactName").withLastName("ContactSurname")
+              .withMobilePhone("+7(987) 777-12-55").withEmail1("email@yandex.com"));
     }
   }
 
-  @Test (enabled = true)
-  public void testContactModification(){
+  @Test
+  public void testContactModification() {
     List<ContactData> before = app.contact().list();
     int index = before.size() - 1;
     int id = before.get(index).getId();
-    ContactData contact = new ContactData(
-            id,
-            "ModificationName", "ModificationLastName",
-            "+7(000) 111-11-11", "modifactionemail@yandex.ru", null);
-
+    ContactData contact = new ContactData()
+            .withId(id).withName("ModificationName").withLastName("ModificationLastName")
+            .withMobilePhone("+7(000) 111-11-11").withEmail1("modifactionemail@yandex.ru");
     app.contact().modify(index, contact);
     List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size());
@@ -40,5 +39,4 @@ public class ContactModificationTest extends TestBase {
     after.sort(byId);
     Assert.assertEquals(after, before);
   }
-
 }

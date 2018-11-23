@@ -101,7 +101,7 @@ public class ContactHelper extends HelperBase {
       String mobilePhone = element.findElement(By.cssSelector("td:nth-of-type(6)")).getText();
       String email_1 = element.findElement(By.cssSelector("td:nth-of-type(5)")).getText();
 
-      contactData.add(new ContactData(id, name, lastName, mobilePhone, email_1,null));
+      contactData.add(new ContactData().withId(id).withName(name).withLastName(lastName).withMobilePhone(mobilePhone).withEmail1(email_1));
     }
     return contactData;
   }
