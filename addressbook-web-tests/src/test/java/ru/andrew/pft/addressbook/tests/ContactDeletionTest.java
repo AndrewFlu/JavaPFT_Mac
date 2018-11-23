@@ -7,13 +7,14 @@ import ru.andrew.pft.addressbook.model.ContactData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class ContactDeletionTest extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions(){
     app.goTo().homePage();
-    if (app.contact().list().size() == 0) {
+    if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData()
               .withName("ContactName").withLastName("ContactSurname")
               .withMobilePhone("+7(987) 777-12-55").withEmail1("email@yandex.com"));
@@ -22,18 +23,15 @@ public class ContactDeletionTest extends TestBase {
 
   @Test (enabled = true)
   public void testContactDeletion() {
-    List<ContactData> before = app.contact().list();
-    int index = before.size() - 1;
+    Set<ContactData> before = app.contact().all();
 
-    app.contact().delete(index);
+    ContactData deletedContact = before.iterator().next();
+    app.contact().delete(deletedContact);
     app.goTo().homePage();
-    List<ContactData> after = app.contact().list();
+    Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size() - 1);
 
-    before.remove(index);
-    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(byId);
-    after.sort(byId);
+    before.remove(deletedContact);
     Assert.assertEquals(after, before);
   }
 }

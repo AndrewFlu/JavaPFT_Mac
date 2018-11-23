@@ -7,8 +7,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.andrew.pft.addressbook.model.ContactData;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -42,16 +43,16 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void initContactModification(int index) {
-    driver.findElements(By.cssSelector("img[title=\"Edit\"]")).get(index).click();
+  public void initContactModificationById(int id) {
+    driver.findElement(By.xpath(String.format("//input[@id='%s']/../..//td/a/img[@title='Edit']", id))).click();
   }
 
   public void submitContactModification() {
     click(By.name("update"));
   }
 
-  public void selectContact(int index) {
-    driver.findElements(By.name("selected[]")).get(index).click();
+  public void selectContactById (int id) {
+    driver.findElement(By.id(Integer.toString(id))).click();
   }
 
   public void initContactDeletion() {
@@ -62,10 +63,6 @@ public class ContactHelper extends HelperBase {
     submitAlert();
   }
 
-  public boolean isThereAContact() {
-    return isElementPresent(By.name("selected[]"));
-  }
-
   public void create(ContactData contactData) {
     initContactCreation();
     fillContactForm((contactData), true);
@@ -73,27 +70,22 @@ public class ContactHelper extends HelperBase {
     returnToHomePage();
   }
 
-  public void modify(int index, ContactData contact) {
-    initContactModification(index);
+  public void modify(ContactData contact) {
+    initContactModificationById(contact.getId());
     fillContactForm(contact, false);
     submitContactModification();
     returnToHomePage();
   }
 
-  public void delete(int index) {
-    selectContact(index);
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
     initContactDeletion();
     submitContactDeletion();
   }
 
-  public int getContactsCount() {
-    return driver.findElements(By.name("selected[]")).size();
-  }
-
-  // метод работает по css-селектору
-  public List<ContactData> list() {
+  public Set<ContactData> all() {
     List<WebElement> elements = driver.findElements(By.cssSelector("tr[name=entry]"));
-    List<ContactData> contactData = new ArrayList<>();
+    Set<ContactData> contactData = new HashSet<>();
     for (WebElement element : elements){
       int id = Integer.parseInt(element.findElement(By.cssSelector("td:nth-of-type(1)>input")).getAttribute("id"));
       String name = element.findElement(By.cssSelector("td:nth-of-type(3)")).getText();
@@ -101,7 +93,8 @@ public class ContactHelper extends HelperBase {
       String mobilePhone = element.findElement(By.cssSelector("td:nth-of-type(6)")).getText();
       String email_1 = element.findElement(By.cssSelector("td:nth-of-type(5)")).getText();
 
-      contactData.add(new ContactData().withId(id).withName(name).withLastName(lastName).withMobilePhone(mobilePhone).withEmail1(email_1));
+      contactData.add(new ContactData()
+              .withId(id).withName(name).withLastName(lastName).withMobilePhone(mobilePhone).withEmail1(email_1));
     }
     return contactData;
   }
