@@ -6,10 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.andrew.pft.addressbook.model.ContactData;
+import ru.andrew.pft.addressbook.model.Contacts;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -83,9 +82,9 @@ public class ContactHelper extends HelperBase {
     submitContactDeletion();
   }
 
-  public Set<ContactData> all() {
+  public Contacts all() {
     List<WebElement> elements = driver.findElements(By.cssSelector("tr[name=entry]"));
-    Set<ContactData> contactData = new HashSet<>();
+    Contacts contactData = new Contacts();
     for (WebElement element : elements){
       int id = Integer.parseInt(element.findElement(By.cssSelector("td:nth-of-type(1)>input")).getAttribute("id"));
       String name = element.findElement(By.cssSelector("td:nth-of-type(3)")).getText();
