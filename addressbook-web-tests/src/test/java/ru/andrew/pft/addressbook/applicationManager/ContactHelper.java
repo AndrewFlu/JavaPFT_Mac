@@ -89,16 +89,31 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.cssSelector("td:nth-of-type(1)>input")).getAttribute("id"));
       String name = element.findElement(By.cssSelector("td:nth-of-type(3)")).getText();
       String lastName = element.findElement(By.cssSelector("td:nth-of-type(2)")).getText();
-      String mobilePhone = element.findElement(By.cssSelector("td:nth-of-type(6)")).getText();
+      String allPhones = element.findElement(By.cssSelector("td:nth-of-type(6)")).getText();
+      String[] phones = allPhones.split("\n");
       String email_1 = element.findElement(By.cssSelector("td:nth-of-type(5)")).getText();
 
       contactData.add(new ContactData()
-              .withId(id).withName(name).withLastName(lastName).withMobilePhone(mobilePhone).withEmail1(email_1));
+              .withId(id).withName(name).withLastName(lastName)
+              .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2])
+              .withEmail1(email_1));
     }
     return contactData;
   }
 
   public int getContactCount() {
     return driver.findElements(By.cssSelector("input[name='selected[]']")).size();
+  }
+
+  public ContactData infoFromEditForm(ContactData contact) {
+    initContactModificationById(contact.getId());
+    String name = driver.findElement(By.name("firstname")).getAttribute("value");
+    String lastName = driver.findElement(By.name("lastname")).getAttribute("value");
+    String homePhone = driver.findElement(By.name("home")).getAttribute("value");
+    String mobilePhone = driver.findElement(By.name("mobile")).getAttribute("value");
+    String workPhone = driver.findElement(By.name("work")).getAttribute("value");
+    driver.navigate().back();
+    return new ContactData().withId(contact.getId()).withName(name).withLastName(lastName)
+            .withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone);
   }
 }
