@@ -27,7 +27,9 @@ public class ContactHelper extends HelperBase {
   public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getContactName());
     type(By.name("lastname"), contactData.getLastContactName());
+    type(By.name("home"), contactData.getHomePhone());
     type(By.name("mobile"), contactData.getMobilePhone());
+    type(By.name("work"), contactData.getWorkPhone());
     type(By.name("email"), contactData.getEmail1());
     if (creation){
       if (contactData.getGroup() != null){
@@ -90,12 +92,11 @@ public class ContactHelper extends HelperBase {
       String name = element.findElement(By.cssSelector("td:nth-of-type(3)")).getText();
       String lastName = element.findElement(By.cssSelector("td:nth-of-type(2)")).getText();
       String allPhones = element.findElement(By.cssSelector("td:nth-of-type(6)")).getText();
-      String[] phones = allPhones.split("\n");
       String email_1 = element.findElement(By.cssSelector("td:nth-of-type(5)")).getText();
 
       contactData.add(new ContactData()
               .withId(id).withName(name).withLastName(lastName)
-              .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2])
+              .withAllPhone(allPhones)
               .withEmail1(email_1));
     }
     return contactData;
