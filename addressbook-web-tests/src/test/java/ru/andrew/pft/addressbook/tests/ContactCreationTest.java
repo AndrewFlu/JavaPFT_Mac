@@ -1,12 +1,11 @@
 package ru.andrew.pft.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
 import org.testng.annotations.Test;
 import ru.andrew.pft.addressbook.model.ContactData;
 import ru.andrew.pft.addressbook.model.Contacts;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.Assert.assertEquals;
 
 public class ContactCreationTest extends TestBase {
 
@@ -19,9 +18,9 @@ public class ContactCreationTest extends TestBase {
     app.goTo().homePage();
     Contacts before = app.contact().all();
     app.contact().create(contact);
+    assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();
-    assertEquals(after.size(), before.size() + 1);
-    assertThat(after, CoreMatchers.equalTo(before.withAdded(contact
+    assertThat(after, equalTo(before.withAdded(contact
             .withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
 }

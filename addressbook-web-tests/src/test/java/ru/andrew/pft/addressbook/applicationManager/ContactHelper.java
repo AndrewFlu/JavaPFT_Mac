@@ -97,4 +97,8 @@ public class ContactHelper extends HelperBase {
     }
     return contactData;
   }
+
+  public int getContactCount() {
+    return driver.findElements(By.cssSelector("input[name='selected[]']")).size();
+  }
 }
