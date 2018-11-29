@@ -33,9 +33,10 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail1());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
-    if (creation){
-      if (contactData.getGroup() != null){
-      new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    type(By.name("address"), contactData.getAddress());
+    if (creation) {
+      if (contactData.getGroup() != null) {
+        new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
       }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -54,7 +55,7 @@ public class ContactHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public void selectContactById (int id) {
+  public void selectContactById(int id) {
     driver.findElement(By.id(Integer.toString(id))).click();
   }
 
@@ -89,17 +90,19 @@ public class ContactHelper extends HelperBase {
   public Contacts all() {
     List<WebElement> elements = driver.findElements(By.cssSelector("tr[name=entry]"));
     Contacts contactData = new Contacts();
-    for (WebElement element : elements){
+    for (WebElement element : elements) {
       int id = Integer.parseInt(element.findElement(By.cssSelector("td:nth-of-type(1)>input")).getAttribute("id"));
       String name = element.findElement(By.cssSelector("td:nth-of-type(3)")).getText();
       String lastName = element.findElement(By.cssSelector("td:nth-of-type(2)")).getText();
       String allPhones = element.findElement(By.cssSelector("td:nth-of-type(6)")).getText();
       String allEmails = element.findElement(By.cssSelector("td:nth-of-type(5)")).getText();
+      String address = element.findElement(By.cssSelector("td:nth-of-type(4)")).getText();
 
       contactData.add(new ContactData()
               .withId(id).withName(name).withLastName(lastName)
               .withAllPhone(allPhones)
-              .withAllEmails(allEmails));
+              .withAllEmails(allEmails)
+              .withAddress(address));
     }
     return contactData;
   }
@@ -118,9 +121,11 @@ public class ContactHelper extends HelperBase {
     String email1 = driver.findElement(By.name("email")).getAttribute("value");
     String email2 = driver.findElement(By.name("email2")).getAttribute("value");
     String email3 = driver.findElement(By.name("email3")).getAttribute("value");
+    String address = driver.findElement(By.name("address")).getText();
     driver.navigate().back();
     return new ContactData().withId(contact.getId()).withName(name).withLastName(lastName)
             .withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone)
-            .withEmail1(email1).withEmail2(email2).withEmail3(email3);
+            .withEmail1(email1).withEmail2(email2).withEmail3(email3)
+            .withAddress(address);
   }
 }
