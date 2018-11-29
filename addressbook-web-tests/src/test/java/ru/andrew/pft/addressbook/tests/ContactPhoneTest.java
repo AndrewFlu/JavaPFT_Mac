@@ -3,7 +3,6 @@ package ru.andrew.pft.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.andrew.pft.addressbook.model.ContactData;
-import ru.andrew.pft.addressbook.model.Contacts;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -16,7 +15,7 @@ public class ContactPhoneTest extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().homePage();
-    if (app.contact().getContactCount() == 0){
+    if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().withName("Name").withLastName("LastName")
               .withHomePhone("+79001111111").withMobilePhone("+79002222222").withWorkPhone("+79003333333"));
     }
@@ -24,8 +23,7 @@ public class ContactPhoneTest extends TestBase {
 
   @Test
   public void testContactPhone() {
-    Contacts before = app.contact().all();
-    ContactData contact = before.iterator().next();
+    ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
     assertThat(contact.getAllPhones(), equalTo(merged(contactInfoFromEditForm)));
@@ -34,7 +32,7 @@ public class ContactPhoneTest extends TestBase {
 
   private String merged(ContactData contact) {
     return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone())
-            .stream().filter((s) -> ! s.equals(""))
+            .stream().filter((s) -> !s.equals(""))
             .map(ContactPhoneTest::cleaned)
             .collect(Collectors.joining("\n"));
   }
