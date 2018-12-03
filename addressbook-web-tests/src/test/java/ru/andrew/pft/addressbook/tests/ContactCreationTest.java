@@ -1,10 +1,14 @@
 package ru.andrew.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.andrew.pft.addressbook.model.ContactData;
 import ru.andrew.pft.addressbook.model.Contacts;
 
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTest extends TestBase {
@@ -22,5 +26,19 @@ public class ContactCreationTest extends TestBase {
     Contacts after = app.contact().all();
     assertThat(after, equalTo(before.withAdded(contact
             .withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+  }
+
+  @Test
+  public void testContactCreationWithPhoto(){
+    ContactData contact = new ContactData()
+            .withName("ContactName1").withLastName("LastContactName").withMobilePhone("+79012050505")
+            .withEmail1("email@gmal.com").withPhoto(new File("src/test/resources/IMG_0268.JPG"));
+    app.goTo().homePage();
+    Contacts before = app.contact().all();
+    app.contact().create(contact);
+    assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
+    Contacts after = app.contact().all();
+    assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+    Assert.assertTrue(app.contact().hasPhoto(contact));
   }
 }

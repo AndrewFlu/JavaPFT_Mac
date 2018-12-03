@@ -27,6 +27,7 @@ public class ContactHelper extends HelperBase {
   public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getContactName());
     type(By.name("lastname"), contactData.getLastContactName());
+    attach(By.name("photo"), contactData.getPhoto());
     type(By.name("home"), contactData.getHomePhone());
     type(By.name("mobile"), contactData.getMobilePhone());
     type(By.name("work"), contactData.getWorkPhone());
@@ -127,5 +128,14 @@ public class ContactHelper extends HelperBase {
             .withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone)
             .withEmail1(email1).withEmail2(email2).withEmail3(email3)
             .withAddress(address);
+  }
+
+  public boolean hasPhoto(ContactData contact) {
+    initContactDetailsView(contact.getId());
+    return isElementPresent(By.cssSelector("img[alt='Embedded Image']"));
+  }
+
+  private void initContactDetailsView(int id) {
+    click(By.xpath(String.format("//a[@href='view.php?id=%s']", id)));
   }
 }

@@ -1,5 +1,6 @@
 package ru.andrew.pft.addressbook.model;
 
+import java.io.File;
 import java.util.Objects;
 
 public class ContactData {
@@ -7,6 +8,7 @@ public class ContactData {
   private int id = Integer.MAX_VALUE;
   private String contactName;
   private String lastContactName;
+  private File photo;
   private String homePhone;
   private String mobilePhone;
   private String workPhone;
@@ -34,6 +36,11 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
+
   public ContactData withHomePhone(String homePhone) {
     this.homePhone = homePhone;
     return this;
@@ -49,12 +56,10 @@ public class ContactData {
     return this;
   }
 
-
   public ContactData withAllPhone(String allPhone) {
     this.allPhones = allPhone;
     return this;
   }
-
 
   public ContactData withEmail1(String email1) {
     this.email1 = email1;
@@ -96,6 +101,10 @@ public class ContactData {
 
   public String getLastContactName() {
     return lastContactName;
+  }
+
+  public File getPhoto() {
+    return photo;
   }
 
   public String getHomePhone() {
