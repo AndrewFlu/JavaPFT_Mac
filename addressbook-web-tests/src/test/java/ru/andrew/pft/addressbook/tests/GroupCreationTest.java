@@ -1,19 +1,32 @@
 package ru.andrew.pft.addressbook.tests;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.andrew.pft.addressbook.model.GroupData;
 import ru.andrew.pft.addressbook.model.Groups;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class GroupCreationTest extends TestBase{
+public class GroupCreationTest extends TestBase {
 
-  @Test
-  public void testGroupCreation() {
+  @DataProvider
+  public Iterator<Object[]> validGroups() {
+    List<Object[]> groups = new ArrayList<>();
+    groups.add(new Object[] {"name_1'", "header_1", "footer_1"});
+    groups.add(new Object[] {"name_2", "header_2", "header_2"});
+    return groups.iterator();
+  }
+
+  @Test (dataProvider = "validGroups")
+  public void testGroupCreation(String name, String header, String footer) {
+    GroupData group = new GroupData().withName(name).withHeader(header).withFooter(footer);
     app.goTo().groupPage();
     Groups before = app.group().all();
-    GroupData group = new GroupData().withName("Group2").withHeader("GroupHeader").withFooter("GroupFooter");
     app.group().create(group);
     assertThat(app.group().getGroupsCount(), equalTo(before.size() + 1));
     Groups after = app.group().all();
@@ -32,7 +45,7 @@ public class GroupCreationTest extends TestBase{
   }
 
   @Test
-  public void testBadGroupCreation(){
+  public void testBadGroupCreation() {
     app.goTo().groupPage();
     Groups before = app.group().all();
     GroupData badGroup = new GroupData().withName("test1'");
