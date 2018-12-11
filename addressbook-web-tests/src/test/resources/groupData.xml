@@ -1,0 +1,27 @@
+<list>
+  <group>
+    <groupName>GroupName_0</groupName>
+    <groupHeader>GroupHeader_0</groupHeader>
+    <groupFooter>GroupFooter_0</groupFooter>
+  </group>
+  <group>
+    <groupName>GroupName_1</groupName>
+    <groupHeader>GroupHeader_1</groupHeader>
+    <groupFooter>GroupFooter_1</groupFooter>
+  </group>
+  <group>
+    <groupName>GroupName_2</groupName>
+    <groupHeader>GroupHeader_2</groupHeader>
+    <groupFooter>GroupFooter_2</groupFooter>
+  </group>
+  <group>
+    <groupName>GroupName_3</groupName>
+    <groupHeader>GroupHeader_3</groupHeader>
+    <groupFooter>GroupFooter_3</groupFooter>
+  </group>
+  <group>
+    <groupName>GroupName_4</groupName>
+    <groupHeader>GroupHeader_4</groupHeader>
+    <groupFooter>GroupFooter_4</groupFooter>
+  </group>
+</list>

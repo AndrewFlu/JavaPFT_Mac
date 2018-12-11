@@ -25,6 +25,7 @@ public class GroupCreationTest extends TestBase {
       groups.add(new Object[]{new GroupData().withName(split[0]).withHeader(split[1]).withFooter(split[2])});
       line = reader.readLine();
     }
+    reader.close();
     return groups.iterator();
   }
 
