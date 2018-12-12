@@ -19,7 +19,6 @@ public class GroupCreationTest extends TestBase {
 
   @DataProvider
   public Iterator<Object[]> validGroups() throws IOException {
-    List<Object[]> groups = new ArrayList<Object[]>();
     BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groupData.xml")));
     String line = reader.readLine();
     String xml = "";
@@ -28,7 +27,9 @@ public class GroupCreationTest extends TestBase {
       line = reader.readLine();
     }
     reader.close();
+    
     XStream xStream = new XStream();
+    xStream.processAnnotations(GroupData.class);
     List<GroupData> groupData = (List<GroupData>) xStream.fromXML(xml);
     return groupData.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
   }
