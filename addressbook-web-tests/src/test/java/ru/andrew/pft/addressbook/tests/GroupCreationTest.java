@@ -1,5 +1,6 @@
 package ru.andrew.pft.addressbook.tests;
 
+import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.andrew.pft.addressbook.model.GroupData;
@@ -9,6 +10,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,15 +20,17 @@ public class GroupCreationTest extends TestBase {
   @DataProvider
   public Iterator<Object[]> validGroups() throws IOException {
     List<Object[]> groups = new ArrayList<Object[]>();
-    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groupData.csv")));
+    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groupData.xml")));
     String line = reader.readLine();
+    String xml = "";
     while (line != null){
-      String[] split = line.split(";");
-      groups.add(new Object[]{new GroupData().withName(split[0]).withHeader(split[1]).withFooter(split[2])});
+      xml += line;
       line = reader.readLine();
     }
     reader.close();
-    return groups.iterator();
+    XStream xStream = new XStream();
+    List<GroupData> groupData = (List<GroupData>) xStream.fromXML(xml);
+    return groupData.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
   }
 
   @Test (dataProvider = "validGroups")
