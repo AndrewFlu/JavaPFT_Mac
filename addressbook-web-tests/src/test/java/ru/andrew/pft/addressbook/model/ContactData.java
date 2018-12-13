@@ -1,5 +1,6 @@
 package ru.andrew.pft.addressbook.model;
 
+import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
@@ -11,18 +12,32 @@ public class ContactData {
 
   @XStreamOmitField
   private int id = Integer.MAX_VALUE;
+
+  @Expose
   private String contactName;
+  @Expose
   private String lastContactName;
+  @Expose
   private File photo;
+  @Expose
   private String homePhone;
+  @Expose
   private String mobilePhone;
+  @Expose
   private String workPhone;
+  @Expose
   private String allPhones;
+  @Expose
   private String email1;
+  @Expose
   private String email2;
+  @Expose
   private String email3;
+  @Expose
   private String allEmails;
+  @Expose
   private String address;
+  @Expose
   private String group;
 
 

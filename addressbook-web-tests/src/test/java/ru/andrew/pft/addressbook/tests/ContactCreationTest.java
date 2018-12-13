@@ -1,5 +1,7 @@
 package ru.andrew.pft.addressbook.tests;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -20,7 +22,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTest extends TestBase {
 
-  @DataProvider(name = "validContactData")
+  @DataProvider(name = "validContactDataFromXml")
   public Iterator<Object[]> validContactsFromXml() throws IOException {
     XStream xstream = new XStream();
     xstream.processAnnotations(ContactData.class);
@@ -36,7 +38,22 @@ public class ContactCreationTest extends TestBase {
     return contacts.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
   }
 
-  @Test(dataProvider = "validContactData")
+  @DataProvider(name = "validContactDataFromJson")
+  public Iterator<Object[]> validContactsFromJson() throws IOException {
+    Gson gson = new Gson();
+    String json = "";
+    try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")))) {
+      String line = reader.readLine();
+      while (line != null) {
+        json += line;
+        line = reader.readLine();
+      }
+      List<ContactData> contacts = (List<ContactData>) gson.fromJson(json, new TypeToken<List<ContactData>>() {}.getType());
+      return contacts.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
+    }
+  }
+
+  @Test(dataProvider = "validContactDataFromJson")
   public void testContactCreation(ContactData contact) {
     app.goTo().homePage();
     Contacts before = app.contact().all();
