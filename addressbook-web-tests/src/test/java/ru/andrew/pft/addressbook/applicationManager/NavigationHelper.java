@@ -22,6 +22,6 @@ public class NavigationHelper extends HelperBase {
             && driver.findElement(By.xpath("//body[1]/div[1]/div[4]/h1[1]")).getText().equals("Groups")) {
       return;
     }
-    click(By.xpath("//a[contains(text(),'groups')]"));
+    click(By.cssSelector("a[href='group.php']"));
   }
 }
