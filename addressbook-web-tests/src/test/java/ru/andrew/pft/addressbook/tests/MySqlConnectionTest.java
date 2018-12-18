@@ -9,20 +9,20 @@ import java.sql.*;
 public class MySqlConnectionTest {
 
   @Test
-  public void dbConnectionTest(){
+  public void dbConnectionTest() {
     Connection conn = null;
     try {
       conn = DriverManager.getConnection("jdbc:mysql://localhost/addressbook?" +
-              "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&"
+              "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&" // фикс для ошибки по таймзонам
               + "user=root&password=");
       System.out.println("Connection successfully established");
 
       Statement stmt = conn.createStatement();
       ResultSet rs = stmt.executeQuery("SELECT group_id, group_name, group_header, group_footer FROM group_list");
       Groups groups = new Groups();
-      while(rs.next()){
+      while (rs.next()) {
         groups.add(new GroupData().withId(rs.getInt("group_id")).withName(rs.getString("group_name"))
-        .withHeader(rs.getString("group_header")).withFooter(rs.getString("group_footer")));
+                .withHeader(rs.getString("group_header")).withFooter(rs.getString("group_footer")));
       }
       System.out.println(groups);
       rs.close();
