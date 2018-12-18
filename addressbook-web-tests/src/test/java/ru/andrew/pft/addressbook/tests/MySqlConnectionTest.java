@@ -25,6 +25,9 @@ public class MySqlConnectionTest {
         .withHeader(rs.getString("group_header")).withFooter(rs.getString("group_footer")));
       }
       System.out.println(groups);
+      rs.close();
+      stmt.close();
+      conn.close();
 
     } catch (SQLException ex) {
       // handle any errors
