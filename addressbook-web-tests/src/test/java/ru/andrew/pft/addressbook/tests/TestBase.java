@@ -36,7 +36,7 @@ public class TestBase {
 
   @AfterMethod (alwaysRun = true)
   public void logTestStop(Method m, Object[] p){
-    logger.info("Strop test " + m.getName() + " with parameters " + Arrays.asList(p));
+    logger.info("Stop test " + m.getName() + " with parameters " + Arrays.asList(p));
   }
 }
 

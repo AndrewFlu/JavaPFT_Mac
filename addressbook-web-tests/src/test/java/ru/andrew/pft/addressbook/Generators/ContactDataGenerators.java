@@ -38,9 +38,10 @@ public class ContactDataGenerators {
 
   private void run() throws IOException {
     List<ContactData> contacts = generateContacts(count);
+    System.out.println(new File(".").getAbsolutePath());
     if (format.equals("xml")) {
       saveAsXml(contacts, new File(file));
-    } else if (format.equals("json")){
+    } else if (format.equals("json")) {
       saveAsJson(contacts, new File(file));
     } else {
       System.out.println("Unrecognized format: " + format);
@@ -50,7 +51,7 @@ public class ContactDataGenerators {
   private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     String json = gson.toJson(contacts);
-    try (Writer writer = new FileWriter(file)){
+    try (Writer writer = new FileWriter(file)) {
       writer.write(json);
     }
   }
@@ -73,7 +74,11 @@ public class ContactDataGenerators {
               .withLastName(String.format("GeneratedLastName_%s", i))
               .withEmail1(String.format("email+%s@yandex.ru", i))
               .withMobilePhone(String.format("+7937938015%s", i))
-              .withAddress(String.format("Russia, Yoshkar-Ola, Annikova st, 25/%s", i)));
+              .withAddress(String.format("Russia, Yoshkar-Ola, Annikova st, 25/%s", i))
+              .withEmail2("")
+              .withEmail3("")
+              .withHomePhone("")
+              .withWorkPhone(""));
     }
     return contacts;
   }

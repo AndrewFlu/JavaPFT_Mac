@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class ContactCreationTest extends TestBase {
 
@@ -48,18 +49,21 @@ public class ContactCreationTest extends TestBase {
         json += line;
         line = reader.readLine();
       }
-      List<ContactData> contacts = (List<ContactData>) gson.fromJson(json, new TypeToken<List<ContactData>>() {}.getType());
+      List<ContactData> contacts = (List<ContactData>) gson.fromJson(json, new TypeToken<List<ContactData>>() {
+      }.getType());
       return contacts.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
     }
   }
 
   @Test(dataProvider = "validContactDataFromJson")
-  public void testContactCreation(ContactData contact) {
+  public void testContactCreation(ContactData contact
+  ) {
+    Contacts before = app.db().contacts();
     app.goTo().homePage();
-    Contacts before = app.contact().all();
     app.contact().create(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
+
     assertThat(after, equalTo(before.withAdded(contact
             .withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
@@ -68,12 +72,17 @@ public class ContactCreationTest extends TestBase {
   public void testContactCreationWithPhoto() {
     ContactData contact = new ContactData()
             .withName("ContactName1").withLastName("LastContactName").withMobilePhone("+79012050505")
-            .withEmail1("email@gmal.com").withPhoto(new File("src/test/resources/IMG_0268.JPG"));
+            .withEmail1("email@gmal.com").withPhoto(new File("src/test/resources/IMG_0268.JPG"))
+            .withWorkPhone("")
+            .withHomePhone("")
+            .withEmail2("")
+            .withEmail3("")
+            .withAddress("");
+    Contacts before = app.db().contacts();
     app.goTo().homePage();
-    Contacts before = app.contact().all();
     app.contact().create(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     Assert.assertTrue(app.contact().hasPhoto(contact));
   }

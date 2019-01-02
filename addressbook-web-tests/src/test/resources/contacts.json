@@ -2,15 +2,34 @@
   {
     "contactName": "GeneratedName_0",
     "lastContactName": "GeneratedLastName_0",
+    "homePhone": "",
     "mobilePhone": "+79379380150",
+    "workPhone": "",
     "email1": "email+0@yandex.ru",
+    "email2": "",
+    "email3": "",
     "address": "Russia, Yoshkar-Ola, Annikova st, 25/0"
   },
   {
     "contactName": "GeneratedName_1",
     "lastContactName": "GeneratedLastName_1",
+    "homePhone": "",
     "mobilePhone": "+79379380151",
+    "workPhone": "",
     "email1": "email+1@yandex.ru",
+    "email2": "",
+    "email3": "",
     "address": "Russia, Yoshkar-Ola, Annikova st, 25/1"
+  },
+  {
+    "contactName": "GeneratedName_2",
+    "lastContactName": "GeneratedLastName_2",
+    "homePhone": "",
+    "mobilePhone": "+79379380152",
+    "workPhone": "",
+    "email1": "email+2@yandex.ru",
+    "email2": "",
+    "email3": "",
+    "address": "Russia, Yoshkar-Ola, Annikova st, 25/2"
   }
 ]
