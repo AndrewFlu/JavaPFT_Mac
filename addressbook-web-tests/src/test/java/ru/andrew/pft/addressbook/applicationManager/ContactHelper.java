@@ -27,7 +27,6 @@ public class ContactHelper extends HelperBase {
   public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getContactName());
     type(By.name("lastname"), contactData.getLastContactName());
-    attach(By.name("photo"), contactData.getPhoto());
     type(By.name("home"), contactData.getHomePhone());
     type(By.name("mobile"), contactData.getMobilePhone());
     type(By.name("work"), contactData.getWorkPhone());
@@ -35,6 +34,8 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
     type(By.name("address"), contactData.getAddress());
+    attach(By.name("photo"), contactData.getPhoto());
+
     if (creation) {
       if (contactData.getGroup() != null) {
         new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
