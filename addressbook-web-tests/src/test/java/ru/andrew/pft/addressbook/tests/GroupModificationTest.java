@@ -11,22 +11,23 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class GroupModificationTest extends TestBase {
 
   @BeforeMethod
-  public void ensurePreconditions(){
-    app.goTo().groupPage();
-    if (app.group().all().size() == 0){
+  public void ensurePreconditions() {
+    if (app.db().groups().size() == 0) {
+      app.goTo().groupPage();
       app.group().create(new GroupData().withName("GroupName"));
     }
   }
 
   @Test
-  public void testGroupModification(){
-    Groups before = app.group().all();
+  public void testGroupModification() {
+    Groups before = app.db().groups();
     GroupData modifiedGroup = before.iterator().next();
     GroupData group = new GroupData()
             .withId(modifiedGroup.getId()).withName("ModificationName").withHeader("ModificationHeader").withFooter("ModificationFooter");
+    app.goTo().groupPage();
     app.group().modify(group);
+    Groups after = app.db().groups();
     assertThat(app.group().getGroupsCount(), equalTo(before.size()));
-    Groups after = app.group().all();
     assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
   }
 }
