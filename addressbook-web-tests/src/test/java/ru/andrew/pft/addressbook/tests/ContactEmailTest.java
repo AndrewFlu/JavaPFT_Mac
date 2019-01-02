@@ -17,7 +17,11 @@ public class ContactEmailTest extends TestBase {
     app.goTo().homePage();
     if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().withName("TestName").withLastName("TestLastName")
-              .withEmail1("testmail+1@mail.ru").withEmail2("testmail+2@mail.ru").withEmail3("testmail+3@mail.ru"));
+              .withEmail1("testmail+1@mail.ru").withEmail2("testmail+2@mail.ru").withEmail3("testmail+3@mail.ru")
+              .withWorkPhone("")
+              .withMobilePhone("")
+              .withHomePhone("")
+              .withAddress(""));
     }
   }
 
