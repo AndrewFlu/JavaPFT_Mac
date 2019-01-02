@@ -54,33 +54,33 @@ public class GroupCreationTest extends TestBase {
 
   @Test(dataProvider = "validGroupsFromJson")
   public void testGroupCreation(GroupData group) {
+    Groups before = app.db().groups();
     app.goTo().groupPage();
-    Groups before = app.group().all();
     app.group().create(group);
     assertThat(app.group().getGroupsCount(), equalTo(before.size() + 1));
-    Groups after = app.group().all();
+    Groups after = app.db().groups();
     assertThat(after, equalTo(before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }
 
   @Test(dataProvider = "validGroupsFromXml")
   public void testGroupCreationWithEmptyHeaderAndFooter(GroupData group) {
-    group.withFooter(null).withHeader(null);
+    group.withFooter("").withHeader("");
+    Groups before = app.db().groups();
     app.goTo().groupPage();
-    Groups before = app.group().all();
     app.group().create(group);
     assertThat(app.group().getGroupsCount(), equalTo(before.size() + 1));
-    Groups after = app.group().all();
+    Groups after = app.db().groups();
     assertThat(after, equalTo(before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }
 
   @Test
   public void testBadGroupCreation() {
-    app.goTo().groupPage();
-    Groups before = app.group().all();
+    Groups before = app.db().groups();
     GroupData badGroup = new GroupData().withName("test1'");
+    app.goTo().groupPage();
     app.group().create(badGroup);
     assertThat(app.group().getGroupsCount(), equalTo(before.size()));
-    Groups after = app.group().all();
+    Groups after = app.db().groups();
     assertThat(after, equalTo(before));
   }
 }
