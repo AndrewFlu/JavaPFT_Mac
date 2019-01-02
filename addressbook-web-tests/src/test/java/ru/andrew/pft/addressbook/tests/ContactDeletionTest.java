@@ -16,12 +16,7 @@ public class ContactDeletionTest extends TestBase {
       app.goTo().homePage();
       app.contact().create(new ContactData()
               .withName("ContactName").withLastName("ContactSurname")
-              .withMobilePhone("+7(987) 777-12-55").withEmail1("email@yandex.com")
-              .withWorkPhone("")
-              .withHomePhone("")
-              .withEmail2("")
-              .withEmail3("")
-              .withAddress(""));
+              .withMobilePhone("+7(987) 777-12-55").withEmail1("email@yandex.com"));
     }
   }
 

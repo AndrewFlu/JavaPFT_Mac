@@ -12,16 +12,11 @@ public class ContactModificationTest extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    app.goTo().homePage();
-    if (app.contact().all().size() == 0) {
+    if (app.db().contacts().size() == 0) {
+      app.goTo().homePage();
       app.contact().create(new ContactData()
               .withName("ContactName").withLastName("ContactSurname")
-              .withMobilePhone("+7(987) 777-12-55").withEmail1("email@yandex.com")
-              .withWorkPhone("")
-              .withHomePhone("")
-              .withEmail2("")
-              .withEmail3("")
-              .withAddress(""));
+              .withMobilePhone("+7(987) 777-12-55").withEmail1("email@yandex.com"));
     }
   }
 

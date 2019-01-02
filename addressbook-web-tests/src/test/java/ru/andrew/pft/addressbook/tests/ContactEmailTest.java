@@ -14,14 +14,10 @@ public class ContactEmailTest extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    app.goTo().homePage();
-    if (app.contact().all().size() == 0) {
+    if (app.db().contacts().size() == 0) {
+      app.goTo().homePage();
       app.contact().create(new ContactData().withName("TestName").withLastName("TestLastName")
-              .withEmail1("testmail+1@mail.ru").withEmail2("testmail+2@mail.ru").withEmail3("testmail+3@mail.ru")
-              .withWorkPhone("")
-              .withMobilePhone("")
-              .withHomePhone("")
-              .withAddress(""));
+              .withEmail1("testmail+1@mail.ru").withEmail2("testmail+2@mail.ru").withEmail3("testmail+3@mail.ru"));
     }
   }
 
