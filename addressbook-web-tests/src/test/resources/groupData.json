@@ -8,5 +8,20 @@
     "groupName": "GroupName_1",
     "groupHeader": "GroupHeader_1",
     "groupFooter": "GroupFooter_1"
+  },
+  {
+    "groupName": "GroupName_2",
+    "groupHeader": "GroupHeader_2",
+    "groupFooter": "GroupFooter_2"
+  },
+  {
+    "groupName": "GroupName_3",
+    "groupHeader": "GroupHeader_3",
+    "groupFooter": "GroupFooter_3"
+  },
+  {
+    "groupName": "GroupName_4",
+    "groupHeader": "GroupHeader_4",
+    "groupFooter": "GroupFooter_4"
   }
 ]
