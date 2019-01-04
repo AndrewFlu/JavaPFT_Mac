@@ -159,4 +159,18 @@ public class ContactHelper extends HelperBase {
   private void selectDesiredGroup(int groupId) {
     new Select(driver.findElement(By.name("to_group"))).selectByValue(String.valueOf(groupId));
   }
+
+  public void deleteFromGroup(ContactData contact) {
+    goToContactGroupsPage(contact.getGroups().iterator().next());
+    selectContactById(contact.getId());
+    submitContactRemovingFromGroup();
+  }
+
+  private void goToContactGroupsPage(GroupData group) {
+    new Select(driver.findElement(By.name("group"))).selectByValue(String.valueOf(group.getId()));
+  }
+
+  private void submitContactRemovingFromGroup() {
+    click(By.name("remove"));
+  }
 }
