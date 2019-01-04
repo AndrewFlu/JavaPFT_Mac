@@ -90,6 +90,9 @@ public class ContactHelper extends HelperBase {
   }
 
   public Contacts all() {
+    if (! isElementPresent(By.id("maintable"))){
+      driver.navigate().back();
+    }
     List<WebElement> elements = driver.findElements(By.cssSelector("tr[name=entry]"));
     Contacts contactData = new Contacts();
     for (WebElement element : elements) {

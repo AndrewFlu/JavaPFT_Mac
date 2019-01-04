@@ -8,6 +8,8 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import ru.andrew.pft.addressbook.applicationManager.ApplicationManager;
+import ru.andrew.pft.addressbook.model.ContactData;
+import ru.andrew.pft.addressbook.model.Contacts;
 import ru.andrew.pft.addressbook.model.GroupData;
 import ru.andrew.pft.addressbook.model.Groups;
 
@@ -46,12 +48,22 @@ public class TestBase {
   }
 
   public void verifyGroupListInUI() {
-    if (Boolean.getBoolean("verifyUI")){
+    if (Boolean.getBoolean("verifyUI")) {
       Groups dbGroups = app.db().groups();
       Groups uiGroups = app.group().all();
       assertThat(uiGroups, equalTo(dbGroups.stream()
               .map((g) -> (new GroupData().withId(g.getId()).withName(g.getGroupName())))
               .collect(Collectors.toSet())));
+    }
+  }
+
+  public void verifyContactListInUI() {
+    if (Boolean.getBoolean("verifyUi")) {
+      Contacts contactsDb = app.db().contacts();
+      Contacts contactsUi = app.contact().all();
+      assertThat(contactsUi, equalTo(contactsDb.stream().map((c) -> (new ContactData()
+              .withId(c.getId()).withName(c.getContactName())
+              .withLastName(c.getLastContactName()).withAddress(c.getAddress()))).collect(Collectors.toSet())));
     }
   }
 }

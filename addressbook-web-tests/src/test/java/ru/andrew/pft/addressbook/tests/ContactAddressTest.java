@@ -25,7 +25,6 @@ public class ContactAddressTest extends TestBase {
     ContactData contact = app.db().contacts().iterator().next();
     app.goTo().homePage();
     ContactData contactDataFromEditForm = app.contact().infoFromEditForm(contact);
-
     assertThat(cleared(contact.getAddress()), equalTo(cleared(contactDataFromEditForm.getAddress())));
   }
 

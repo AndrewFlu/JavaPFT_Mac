@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.Assert.assertEquals;
 
 public class ContactCreationTest extends TestBase {
 
@@ -56,16 +55,14 @@ public class ContactCreationTest extends TestBase {
   }
 
   @Test(dataProvider = "validContactDataFromJson")
-  public void testContactCreation(ContactData contact
-  ) {
+  public void testContactCreation(ContactData contact) {
     Contacts before = app.db().contacts();
     app.goTo().homePage();
     app.contact().create(contact);
     assertThat(app.contact().getContactCount(), equalTo(before.size() + 1));
     Contacts after = app.db().contacts();
-
-    assertThat(after, equalTo(before.withAdded(contact
-            .withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+    assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+    verifyContactListInUI();
   }
 
   @Test
@@ -85,5 +82,6 @@ public class ContactCreationTest extends TestBase {
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     Assert.assertTrue(app.contact().hasPhoto(contact));
+    verifyContactListInUI();
   }
 }
