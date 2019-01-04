@@ -22,6 +22,10 @@ public class Contacts extends ForwardingSet <ContactData> {
     this.forwardingContactSet = new HashSet<>(contacts);
   }
 
+  public Contacts(Set<ContactData> contacts) {
+    this.forwardingContactSet = new HashSet<>(contacts);
+  }
+
 
   @Override
   protected Set delegate() {

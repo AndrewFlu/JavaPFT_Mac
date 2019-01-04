@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.andrew.pft.addressbook.model.ContactData;
 import ru.andrew.pft.addressbook.model.Contacts;
+import ru.andrew.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -37,8 +38,9 @@ public class ContactHelper extends HelperBase {
     attach(By.name("photo"), contactData.getPhoto());
 
     if (creation) {
-      if (contactData.getGroup() != null) {
-        new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getGroupName());
       }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -141,5 +143,20 @@ public class ContactHelper extends HelperBase {
 
   private void initContactDetailsView(int id) {
     click(By.xpath(String.format("//a[@href='view.php?id=%s']", id)));
+  }
+
+  public void addToGroup(ContactData contact, GroupData group) {
+    selectContactById(contact.getId());
+    selectDesiredGroup(group.getId());
+    submitContactGroupAddition();
+    driver.navigate().back();
+  }
+
+  private void submitContactGroupAddition() {
+    click(By.name("add"));
+  }
+
+  private void selectDesiredGroup(int groupId) {
+    new Select(driver.findElement(By.name("to_group"))).selectByValue(String.valueOf(groupId));
   }
 }

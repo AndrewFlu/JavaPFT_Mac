@@ -4,10 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.andrew.pft.addressbook.model.ContactData;
 import ru.andrew.pft.addressbook.model.Contacts;
+import ru.andrew.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -54,6 +57,7 @@ public class ContactCreationTest extends TestBase {
     }
   }
 
+
   @Test(dataProvider = "validContactDataFromJson")
   public void testContactCreation(ContactData contact) {
     Contacts before = app.db().contacts();
@@ -70,11 +74,7 @@ public class ContactCreationTest extends TestBase {
     ContactData contact = new ContactData()
             .withName("ContactName1").withLastName("LastContactName").withMobilePhone("+79012050505")
             .withEmail1("email@gmal.com").withPhoto(new File("src/test/resources/IMG_0268.JPG"))
-            .withWorkPhone("")
-            .withHomePhone("")
-            .withEmail2("")
-            .withEmail3("")
-            .withAddress("");
+            .withWorkPhone("").withHomePhone("").withEmail2("").withEmail3("").withAddress("");
     Contacts before = app.db().contacts();
     app.goTo().homePage();
     app.contact().create(contact);
