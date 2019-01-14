@@ -47,10 +47,17 @@ public class ApplicationManager {
     sessionHelper = new SessionHelper(driver);
     driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     driver.get(properties.getProperty("web.baseUrl"));
-    sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
   }
 
   public void stop() {
     driver.quit();
+  }
+
+  public HttpHelper newSession(){
+    return new HttpHelper(this);
+  }
+
+  public String getProperty(String key) {
+    return properties.getProperty(key);
   }
 }
