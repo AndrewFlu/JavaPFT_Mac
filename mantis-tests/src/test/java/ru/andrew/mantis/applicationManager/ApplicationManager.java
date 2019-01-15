@@ -16,11 +16,9 @@ public class ApplicationManager {
 
   private final Properties properties;
   private WebDriver driver;
-  private SessionHelper sessionHelper;
-
-
   private String projectPath = System.getProperty("user.dir");
   public String browser;
+  private RegistrationHelper registrationHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -30,34 +28,46 @@ public class ApplicationManager {
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-
-    if (browser.equals("firefox")) {
-      System.setProperty("webdriver.gecko.driver", projectPath + "/drivers/firefox/geckodriver");
-      driver = new FirefoxDriver();
-    } else if (browser.equals("chrome")) {
-      System.setProperty("webdriver.chrome.driver", projectPath + "/drivers/chrome/chromedriver");
-      driver = new ChromeDriver();
-    } else if (browser.equals("safari")) {
-      driver = new SafariDriver();
-    } else if (browser.equals("iexplorer")) {
-      System.setProperty("webdriver.ie.driver", projectPath + "/drivers/ie/IEDriverServer.exe");
-      driver = new InternetExplorerDriver();
-    }
-
-    sessionHelper = new SessionHelper(driver);
-    driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-    driver.get(properties.getProperty("web.baseUrl"));
   }
 
   public void stop() {
-    driver.quit();
-  }
-
-  public HttpHelper newSession(){
-    return new HttpHelper(this);
+    if (driver != null) {
+      driver.quit();
+    }
   }
 
   public String getProperty(String key) {
     return properties.getProperty(key);
+  }
+
+  public HttpHelper newSession() {
+    return new HttpHelper(this);
+  }
+
+  public RegistrationHelper registration() {
+    if (registrationHelper == null) {
+      registrationHelper = new RegistrationHelper(this);
+    }
+    return registrationHelper;
+  }
+
+  public WebDriver getDriver() {
+    if (driver == null) {
+      if (browser.equals("firefox")) {
+        System.setProperty("webdriver.gecko.driver", projectPath + "/drivers/firefox/geckodriver");
+        driver = new FirefoxDriver();
+      } else if (browser.equals("chrome")) {
+        System.setProperty("webdriver.chrome.driver", projectPath + "/drivers/chrome/chromedriver");
+        driver = new ChromeDriver();
+      } else if (browser.equals("safari")) {
+        driver = new SafariDriver();
+      } else if (browser.equals("iexplorer")) {
+        System.setProperty("webdriver.ie.driver", projectPath + "/drivers/ie/IEDriverServer.exe");
+        driver = new InternetExplorerDriver();
+      }
+      driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+      driver.get(properties.getProperty("web.baseUrl"));
+    }
+    return driver;
   }
 }
