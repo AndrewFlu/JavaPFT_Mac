@@ -10,9 +10,11 @@ import java.io.File;
 public class HelperBase {
 
   protected WebDriver driver;
+  protected ApplicationManager app;
 
-  public HelperBase(WebDriver driver) {
-    this.driver = driver;
+  public HelperBase(ApplicationManager app) {
+    this.driver = app.getDriver();
+    this.app = app;
   }
 
   public void click(By locator) {
