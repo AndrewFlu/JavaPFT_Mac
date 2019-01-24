@@ -4,8 +4,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.andrew.mantis.model.MailMessage;
+import ru.lanwen.verbalregex.VerbalExpression;
 
+import java.io.IOException;
 import java.util.List;
+
+import static org.testng.Assert.assertTrue;
 
 public class RegistrationTest extends TestBase {
 
@@ -15,18 +19,22 @@ public class RegistrationTest extends TestBase {
   }
 
   @Test
-  public void testRegistration() {
-    String user = "user";
-    String email = "useremail@localhost.localdomain";
+  public void testRegistration() throws IOException {
+    long now = System.currentTimeMillis();
+    String user = String.format("user%s", now);
+    String password = "password";
+    String email = String.format("user_email%s@localhost.localdomain", now);
     app.registration().start(user, email);
-    List<MailMessage> messages = app.mail().wailForMail(2, 10000);
-    findConfirmationLinc(messages, email);
-
+    List<MailMessage> messages = app.mail().wailForMail(2, 20000);
+    String confirmationLinc = findConfirmationLinc(messages, email);
+    app.registration().finish(confirmationLinc, password);
+    assertTrue(app.newSession().login(user, password));
   }
 
   private String findConfirmationLinc(List<MailMessage> messages, String email) {
     MailMessage message = messages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
-
+    VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
+    return regex.getText(message.text);
   }
 
   @AfterMethod (alwaysRun = true)

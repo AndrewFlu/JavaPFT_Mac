@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class MailHelper {
 
   private final Wiser wiser;
-  private final ApplicationManager app;
+  private ApplicationManager app;
 
   public MailHelper(ApplicationManager app) {
     this.app = app;
@@ -49,6 +49,8 @@ public class MailHelper {
   }
 
   public void start(){
+
+    wiser.setPort(1025);
     wiser.start();
   }
 
