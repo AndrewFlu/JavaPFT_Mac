@@ -5,7 +5,6 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.andrew.mantis.applicationManager.ApplicationManager;
 
-import java.io.File;
 import java.io.IOException;
 
 public class TestBase {
