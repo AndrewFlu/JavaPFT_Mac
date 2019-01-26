@@ -1,11 +1,10 @@
 package ru.andrew.mantis.tests;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.andrew.mantis.model.MailMessage;
 import ru.lanwen.verbalregex.VerbalExpression;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
 
@@ -13,13 +12,13 @@ import static org.testng.Assert.assertTrue;
 
 public class RegistrationTest extends TestBase {
 
-//  @BeforeMethod
+  //  @BeforeMethod
   public void startMailServer() {
     app.mail().start();
   }
 
   @Test
-  public void testRegistration() throws IOException {
+  public void testRegistration() throws IOException, MessagingException {
     long now = System.currentTimeMillis();
     String user = String.format("user%s", now);
     String password = "password";
@@ -40,7 +39,7 @@ public class RegistrationTest extends TestBase {
     return regex.getText(message.text);
   }
 
-//  @AfterMethod (alwaysRun = true)
+  //  @AfterMethod (alwaysRun = true)
   public void stopMailServer() {
     app.mail().stop();
   }
