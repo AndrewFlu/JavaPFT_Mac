@@ -14,7 +14,8 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
 
-  private final Properties properties;
+  private Properties properties;
+  private SoapHelper soapHelper;
   private WebDriver driver;
   private String projectPath = System.getProperty("user.dir");
   public String browser;
@@ -73,6 +74,13 @@ public class ApplicationManager {
       jamesHelper = new JamesHelper(this);
     }
     return jamesHelper;
+  }
+
+  public SoapHelper soap(){
+    if (soapHelper == null){
+      soapHelper = new SoapHelper(this);
+    }
+    return soapHelper;
   }
 
   public WebDriver getDriver() {
