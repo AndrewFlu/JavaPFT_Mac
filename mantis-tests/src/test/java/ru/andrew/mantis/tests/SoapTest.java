@@ -39,7 +39,7 @@ public class SoapTest extends TestBase {
 
     Project project = app.soap().getProjects().iterator().next();
     Issue issue = app.soap().getAllIssues(project).iterator().next();
-    IssueStatus issueStatus = app.soap().getIssueStatus(issue.getId());
+    IssueStatus issueStatus = app.soap().getIssueData(issue.getId()).getStatus();
     System.out.println(issueStatus.getName());
     System.out.println(issueStatus.getId());
   }

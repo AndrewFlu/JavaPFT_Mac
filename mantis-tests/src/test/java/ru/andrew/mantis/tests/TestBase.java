@@ -5,7 +5,7 @@ import org.testng.SkipException;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.andrew.mantis.applicationManager.ApplicationManager;
-import ru.andrew.mantis.model.IssueStatus;
+import ru.andrew.mantis.model.Issue;
 
 import javax.xml.rpc.ServiceException;
 import java.io.IOException;
@@ -29,8 +29,8 @@ public class TestBase {
   }
 
   public boolean isIssueOpen(int issueId) throws RemoteException, ServiceException, MalformedURLException {
-    IssueStatus issueStatus = app.soap().getIssueStatus(issueId);
-    if (issueStatus.getId() == 80 || issueStatus.getId() == 90) {
+    Issue issue = app.soap().getIssueData(issueId);
+    if (issue.getStatus().getId() == 80 || issue.getStatus().getId() == 90) {
       return false;
     } else {
       return true;

@@ -55,19 +55,17 @@ public class SoapHelper {
             .withName(createdIssue.getProject().getName()));
   }
 
-  public IssueStatus getIssueStatus(int issueId) throws MalformedURLException, ServiceException, RemoteException {
+  public Issue getIssueData(int issueId) throws MalformedURLException, ServiceException, RemoteException {
     MantisConnectPortType mc = getMantisConnect();
     IssueData issueData = mc.mc_issue_get(app.getProperty("soap.adminLogin"), app.getProperty("soap.adminPassword"), BigInteger.valueOf(issueId));
-    List<Issue> issues = Arrays.asList(issueData).stream().map((i) -> (new Issue().withId(i.getId().intValue())
-            .withTitle(i.getSummary()).withDescription(i.getDescription())
-            .withProject(new Project().withId(i.getProject().getId().intValue()).withName(i.getProject().getName()))
-            .withStatus(new IssueStatus().withId(i.getStatus().getId().intValue()).withName(i.getStatus().getName()))))
-            .collect(Collectors.toList());
-
-    return issues.get(0).getStatus();
+    Issue issue = new Issue().withId(issueData.getId().intValue())
+            .withTitle(issueData.getSummary()).withDescription(issueData.getDescription())
+            .withProject(new Project().withId(issueData.getProject().getId().intValue()).withName(issueData.getProject().getName()))
+            .withStatus(new IssueStatus().withId(issueData.getStatus().getId().intValue()).withName(issueData.getStatus().getName()));
 
     // 80 - id resolved issue
     // 90 - id closed issue
+    return issue;
   }
 
   public Set<Issue> getAllIssues(Project project) throws MalformedURLException, ServiceException, RemoteException {
