@@ -70,10 +70,10 @@ public class SoapHelper {
     // 90 - id closed issue
   }
 
-  public Set<Issue> getAllIssues() throws MalformedURLException, ServiceException, RemoteException {
+  public Set<Issue> getAllIssues(Project project) throws MalformedURLException, ServiceException, RemoteException {
     MantisConnectPortType mantisConnect = getMantisConnect();
     IssueData[] issueData = mantisConnect.mc_project_get_issues(app.getProperty("soap.adminLogin"), app.getProperty("soap.adminPassword")
-            , BigInteger.valueOf(app.soap().getProjects().iterator().next().getId()), null, null);
+            , BigInteger.valueOf(project.getId()), null, null);
     return Arrays.asList(issueData).stream().map((i) -> (new Issue().withId(i.getId().intValue())
             .withDescription(i.getDescription()).withTitle(i.getSummary())
             .withProject(new Project().withId(i.getProject().getId().intValue())
