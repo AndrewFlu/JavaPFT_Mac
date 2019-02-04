@@ -9,7 +9,3 @@ dependencies{
     compile 'com.slickqa:testng:7.0.0-7'
     compile 'org.seleniumhq.selenium:selenium-java:3.141.5'
 }
-
-test{
-	useTestNG()
-}
