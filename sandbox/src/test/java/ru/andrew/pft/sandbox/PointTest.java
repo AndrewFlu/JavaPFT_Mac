@@ -8,13 +8,13 @@ public class PointTest {
   @Test
   public void correctDistanceCalculation(){
     Point p1 = new Point(5, 12);
-    Assert.assertEquals(p1.pointDistance(), 5.0);
+    Assert.assertEquals(p1.pointDistance(), 7.0);
   }
 
   @Test
   public void correctDistanceCalculationViaDouble(){
     Point p2 = new Point(-1.5, 11.2);
-    Assert.assertEquals(p2.pointDistance(), 12.5);
+    Assert.assertEquals(p2.pointDistance(), 12.7);
   }
 
   @Test
