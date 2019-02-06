@@ -4,8 +4,8 @@
     <test name="Groups" >
         <classes>
             <class name="ru.andrew.pft.addressbook.tests.GroupCreationTest"/>
-            <class name="ru.andrew.pft.addressbook.tests.GroupModificationTest"/>
-            <class name="ru.andrew.pft.addressbook.tests.GroupDeletionTest"/>
+            <!--<class name="ru.andrew.pft.addressbook.tests.GroupModificationTest"/>-->
+            <!--<class name="ru.andrew.pft.addressbook.tests.GroupDeletionTest"/>-->
         </classes>
     </test>
 </suite>
