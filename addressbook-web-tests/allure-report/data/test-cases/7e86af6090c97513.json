@@ -1,21 +1,21 @@
 {
-  "uid" : "4bc1b86f7601cb45",
-  "name" : "testBadGroupCreation",
-  "fullName" : "ru.andrew.pft.addressbook.tests.GroupCreationTest.testBadGroupCreation",
-  "historyId" : "7864e29d9ec0391eac91fa29549d32d5",
+  "uid" : "7e86af6090c97513",
+  "name" : "testGroupCreationWithEmptyHeaderAndFooter",
+  "fullName" : "ru.andrew.pft.addressbook.tests.GroupCreationTest.testGroupCreationWithEmptyHeaderAndFooter",
+  "historyId" : "7b1fb1408fb7ac10a1dd4cce7241220d",
   "time" : {
-    "start" : 1549813046932,
-    "stop" : 1549813049189,
-    "duration" : 2257
+    "start" : 1549813053908,
+    "stop" : 1549813054543,
+    "duration" : 635
   },
   "status" : "passed",
   "flaky" : false,
   "beforeStages" : [ {
     "name" : "logTestStart",
     "time" : {
-      "start" : 1549813046540,
-      "stop" : 1549813046541,
-      "duration" : 1
+      "start" : 1549813053906,
+      "stop" : 1549813053906,
+      "duration" : 0
     },
     "description" : "",
     "status" : "passed",
@@ -46,8 +46,8 @@
   "afterStages" : [ {
     "name" : "logTestStop",
     "time" : {
-      "start" : 1549813049201,
-      "stop" : 1549813049201,
+      "start" : 1549813054544,
+      "stop" : 1549813054544,
       "duration" : 0
     },
     "description" : "",
@@ -84,7 +84,7 @@
     "value" : "ru.andrew.pft.addressbook.tests.GroupCreationTest"
   }, {
     "name" : "testMethod",
-    "value" : "testBadGroupCreation"
+    "value" : "testGroupCreationWithEmptyHeaderAndFooter"
   }, {
     "name" : "parentSuite",
     "value" : "Suite1"
@@ -110,16 +110,17 @@
     "name" : "resultFormat",
     "value" : "allure2"
   } ],
-  "parameters" : [ ],
+  "parameters" : [ {
+    "name" : "arg0",
+    "value" : "GroupData{id=0, groupName='GroupName_0', groupHeader='GroupHeader_0', groupFooter='GroupFooter_0'}"
+  } ],
   "links" : [ ],
-  "hidden" : false,
-  "retry" : false,
+  "hidden" : true,
+  "retry" : true,
   "extra" : {
-    "severity" : "normal",
-    "retries" : [ ],
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "4bc1b86f7601cb45.json",
-  "parameterValues" : [ ]
+  "source" : "7e86af6090c97513.json",
+  "parameterValues" : [ "GroupData{id=0, groupName='GroupName_0', groupHeader='GroupHeader_0', groupFooter='GroupFooter_0'}" ]
 }

@@ -1,21 +1,21 @@
 {
-  "uid" : "83759c577e35e1ec",
-  "name" : "testGroupCreation",
-  "fullName" : "ru.andrew.pft.addressbook.tests.GroupCreationTest.testGroupCreation",
-  "historyId" : "b827d94d77fa6ea89a1ef2f2419e545c",
+  "uid" : "af895526e0b890c6",
+  "name" : "testBadGroupCreation",
+  "fullName" : "ru.andrew.pft.addressbook.tests.GroupCreationTest.testBadGroupCreation",
+  "historyId" : "7864e29d9ec0391eac91fa29549d32d5",
   "time" : {
-    "start" : 1549813050175,
-    "stop" : 1549813051089,
-    "duration" : 914
+    "start" : 1549813046932,
+    "stop" : 1549813049189,
+    "duration" : 2257
   },
   "status" : "passed",
   "flaky" : false,
   "beforeStages" : [ {
     "name" : "logTestStart",
     "time" : {
-      "start" : 1549813050173,
-      "stop" : 1549813050173,
-      "duration" : 0
+      "start" : 1549813046540,
+      "stop" : 1549813046541,
+      "duration" : 1
     },
     "description" : "",
     "status" : "passed",
@@ -46,8 +46,8 @@
   "afterStages" : [ {
     "name" : "logTestStop",
     "time" : {
-      "start" : 1549813051090,
-      "stop" : 1549813051090,
+      "start" : 1549813049201,
+      "stop" : 1549813049201,
       "duration" : 0
     },
     "description" : "",
@@ -84,7 +84,7 @@
     "value" : "ru.andrew.pft.addressbook.tests.GroupCreationTest"
   }, {
     "name" : "testMethod",
-    "value" : "testGroupCreation"
+    "value" : "testBadGroupCreation"
   }, {
     "name" : "parentSuite",
     "value" : "Suite1"
@@ -110,19 +110,14 @@
     "name" : "resultFormat",
     "value" : "allure2"
   } ],
-  "parameters" : [ {
-    "name" : "arg0",
-    "value" : "GroupData{id=2147483647, groupName='GroupName_1', groupHeader='GroupHeader_1', groupFooter='GroupFooter_1'}"
-  } ],
+  "parameters" : [ ],
   "links" : [ ],
-  "hidden" : false,
-  "retry" : false,
+  "hidden" : true,
+  "retry" : true,
   "extra" : {
-    "severity" : "normal",
-    "retries" : [ ],
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "83759c577e35e1ec.json",
-  "parameterValues" : [ "GroupData{id=2147483647, groupName='GroupName_1', groupHeader='GroupHeader_1', groupFooter='GroupFooter_1'}" ]
+  "source" : "af895526e0b890c6.json",
+  "parameterValues" : [ ]
 }

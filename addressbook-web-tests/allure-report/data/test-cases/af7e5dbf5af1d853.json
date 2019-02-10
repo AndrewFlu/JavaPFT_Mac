@@ -1,20 +1,20 @@
 {
-  "uid" : "12dc769b794f23db",
+  "uid" : "af7e5dbf5af1d853",
   "name" : "testGroupCreation",
   "fullName" : "ru.andrew.pft.addressbook.tests.GroupCreationTest.testGroupCreation",
-  "historyId" : "562f6d8cc56ab0c2992bcb1198dcb228",
+  "historyId" : "c656d5c883897d4880dac5cadd0b4308",
   "time" : {
-    "start" : 1549813049292,
-    "stop" : 1549813050169,
-    "duration" : 877
+    "start" : 1549815805405,
+    "stop" : 1549815806288,
+    "duration" : 883
   },
   "status" : "passed",
   "flaky" : false,
   "beforeStages" : [ {
     "name" : "logTestStart",
     "time" : {
-      "start" : 1549813049288,
-      "stop" : 1549813049288,
+      "start" : 1549815805403,
+      "stop" : 1549815805403,
       "duration" : 0
     },
     "description" : "",
@@ -29,9 +29,9 @@
   }, {
     "name" : "setUp",
     "time" : {
-      "start" : 1549813040045,
-      "stop" : 1549813046499,
-      "duration" : 6454
+      "start" : 1549815793105,
+      "stop" : 1549815799455,
+      "duration" : 6350
     },
     "description" : "",
     "status" : "passed",
@@ -46,8 +46,8 @@
   "afterStages" : [ {
     "name" : "logTestStop",
     "time" : {
-      "start" : 1549813050172,
-      "stop" : 1549813050172,
+      "start" : 1549815806290,
+      "stop" : 1549815806290,
       "duration" : 0
     },
     "description" : "",
@@ -62,8 +62,8 @@
   }, {
     "name" : "tearDown",
     "time" : {
-      "start" : 1549813055177,
-      "stop" : 1549813055261,
+      "start" : 1549815808717,
+      "stop" : 1549815808801,
       "duration" : 84
     },
     "description" : "",
@@ -99,7 +99,7 @@
     "value" : "MacBook-Pro-Andrej.local"
   }, {
     "name" : "thread",
-    "value" : "2664@MacBook-Pro-Andrej.local.Test worker(10)"
+    "value" : "10338@MacBook-Pro-Andrej.local.Test worker(10)"
   }, {
     "name" : "framework",
     "value" : "testng"
@@ -112,17 +112,25 @@
   } ],
   "parameters" : [ {
     "name" : "arg0",
-    "value" : "GroupData{id=2147483647, groupName='GroupName_0', groupHeader='GroupHeader_0', groupFooter='GroupFooter_0'}"
+    "value" : "GroupData{id=2147483647, groupName='GroupName_3', groupHeader='GroupHeader_3', groupFooter='GroupFooter_3'}"
   } ],
   "links" : [ ],
   "hidden" : false,
   "retry" : false,
   "extra" : {
     "severity" : "normal",
-    "retries" : [ ],
+    "retries" : [ {
+      "uid" : "c8cf5bf0447b32f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1549813052003,
+        "stop" : 1549813052789,
+        "duration" : 786
+      }
+    } ],
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "12dc769b794f23db.json",
-  "parameterValues" : [ "GroupData{id=2147483647, groupName='GroupName_0', groupHeader='GroupHeader_0', groupFooter='GroupFooter_0'}" ]
+  "source" : "af7e5dbf5af1d853.json",
+  "parameterValues" : [ "GroupData{id=2147483647, groupName='GroupName_3', groupHeader='GroupHeader_3', groupFooter='GroupFooter_3'}" ]
 }

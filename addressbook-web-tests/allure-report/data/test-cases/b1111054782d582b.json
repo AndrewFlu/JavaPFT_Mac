@@ -1,20 +1,20 @@
 {
-  "uid" : "b303914024972fe0",
+  "uid" : "b1111054782d582b",
   "name" : "testGroupCreation",
   "fullName" : "ru.andrew.pft.addressbook.tests.GroupCreationTest.testGroupCreation",
-  "historyId" : "30669ba7c6d736fbe91075f0365728f7",
+  "historyId" : "b827d94d77fa6ea89a1ef2f2419e545c",
   "time" : {
-    "start" : 1549813052797,
-    "stop" : 1549813053634,
-    "duration" : 837
+    "start" : 1549813050175,
+    "stop" : 1549813051089,
+    "duration" : 914
   },
   "status" : "passed",
   "flaky" : false,
   "beforeStages" : [ {
     "name" : "logTestStart",
     "time" : {
-      "start" : 1549813052793,
-      "stop" : 1549813052793,
+      "start" : 1549813050173,
+      "stop" : 1549813050173,
       "duration" : 0
     },
     "description" : "",
@@ -46,9 +46,9 @@
   "afterStages" : [ {
     "name" : "logTestStop",
     "time" : {
-      "start" : 1549813053635,
-      "stop" : 1549813053636,
-      "duration" : 1
+      "start" : 1549813051090,
+      "stop" : 1549813051090,
+      "duration" : 0
     },
     "description" : "",
     "status" : "passed",
@@ -112,17 +112,15 @@
   } ],
   "parameters" : [ {
     "name" : "arg0",
-    "value" : "GroupData{id=2147483647, groupName='GroupName_4', groupHeader='GroupHeader_4', groupFooter='GroupFooter_4'}"
+    "value" : "GroupData{id=2147483647, groupName='GroupName_1', groupHeader='GroupHeader_1', groupFooter='GroupFooter_1'}"
   } ],
   "links" : [ ],
-  "hidden" : false,
-  "retry" : false,
+  "hidden" : true,
+  "retry" : true,
   "extra" : {
-    "severity" : "normal",
-    "retries" : [ ],
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "b303914024972fe0.json",
-  "parameterValues" : [ "GroupData{id=2147483647, groupName='GroupName_4', groupHeader='GroupHeader_4', groupFooter='GroupFooter_4'}" ]
+  "source" : "b1111054782d582b.json",
+  "parameterValues" : [ "GroupData{id=2147483647, groupName='GroupName_1', groupHeader='GroupHeader_1', groupFooter='GroupFooter_1'}" ]
 }

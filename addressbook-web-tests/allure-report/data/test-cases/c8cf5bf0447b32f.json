@@ -1,20 +1,20 @@
 {
-  "uid" : "fddb186f3d84f16f",
-  "name" : "testGroupCreationWithEmptyHeaderAndFooter",
-  "fullName" : "ru.andrew.pft.addressbook.tests.GroupCreationTest.testGroupCreationWithEmptyHeaderAndFooter",
-  "historyId" : "8705f9cb6b6272baf2c70906a38a1d3c",
+  "uid" : "c8cf5bf0447b32f",
+  "name" : "testGroupCreation",
+  "fullName" : "ru.andrew.pft.addressbook.tests.GroupCreationTest.testGroupCreation",
+  "historyId" : "c656d5c883897d4880dac5cadd0b4308",
   "time" : {
-    "start" : 1549813054548,
-    "stop" : 1549813055162,
-    "duration" : 614
+    "start" : 1549813052003,
+    "stop" : 1549813052789,
+    "duration" : 786
   },
   "status" : "passed",
   "flaky" : false,
   "beforeStages" : [ {
     "name" : "logTestStart",
     "time" : {
-      "start" : 1549813054546,
-      "stop" : 1549813054546,
+      "start" : 1549813051999,
+      "stop" : 1549813051999,
       "duration" : 0
     },
     "description" : "",
@@ -46,9 +46,9 @@
   "afterStages" : [ {
     "name" : "logTestStop",
     "time" : {
-      "start" : 1549813055163,
-      "stop" : 1549813055164,
-      "duration" : 1
+      "start" : 1549813052791,
+      "stop" : 1549813052791,
+      "duration" : 0
     },
     "description" : "",
     "status" : "passed",
@@ -84,7 +84,7 @@
     "value" : "ru.andrew.pft.addressbook.tests.GroupCreationTest"
   }, {
     "name" : "testMethod",
-    "value" : "testGroupCreationWithEmptyHeaderAndFooter"
+    "value" : "testGroupCreation"
   }, {
     "name" : "parentSuite",
     "value" : "Suite1"
@@ -112,17 +112,15 @@
   } ],
   "parameters" : [ {
     "name" : "arg0",
-    "value" : "GroupData{id=0, groupName='GroupName_1', groupHeader='GroupHeader_1', groupFooter='GroupFooter_1'}"
+    "value" : "GroupData{id=2147483647, groupName='GroupName_3', groupHeader='GroupHeader_3', groupFooter='GroupFooter_3'}"
   } ],
   "links" : [ ],
-  "hidden" : false,
-  "retry" : false,
+  "hidden" : true,
+  "retry" : true,
   "extra" : {
-    "severity" : "normal",
-    "retries" : [ ],
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "fddb186f3d84f16f.json",
-  "parameterValues" : [ "GroupData{id=0, groupName='GroupName_1', groupHeader='GroupHeader_1', groupFooter='GroupFooter_1'}" ]
+  "source" : "c8cf5bf0447b32f.json",
+  "parameterValues" : [ "GroupData{id=2147483647, groupName='GroupName_3', groupHeader='GroupHeader_3', groupFooter='GroupFooter_3'}" ]
 }
