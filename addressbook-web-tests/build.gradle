@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'io.qameta.allure'
 
 repositories {
     mavenCentral()
@@ -14,6 +15,22 @@ dependencies{
     implementation 'ch.qos.logback:logback-classic:1.3.0-alpha4'
     implementation 'mysql:mysql-connector-java:8.0.13'
     implementation 'org.hibernate:hibernate-core:5.4.0.Final'
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.3"
+    }
+}
+
+allure {
+    version = '2.9.0'
+    autoconfigure = true
+    aspectjweaver = true
+    allureJavaVersion = '2.9.0'
 }
 
 // Задача 1 - Тестирование контактов

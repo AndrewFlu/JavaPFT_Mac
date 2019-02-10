@@ -1,0 +1,105 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "ru.andrew.pft.addressbook.tests.GroupCreationTest",
+    "children" : [ {
+      "name" : "testBadGroupCreation",
+      "uid" : "4bc1b86f7601cb45",
+      "parentUid" : "0d344b1ca11c24d261aa2a2e0198f5f6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1549813046932,
+        "stop" : 1549813049189,
+        "duration" : 2257
+      },
+      "flaky" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testGroupCreation",
+      "uid" : "12dc769b794f23db",
+      "parentUid" : "0d344b1ca11c24d261aa2a2e0198f5f6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1549813049292,
+        "stop" : 1549813050169,
+        "duration" : 877
+      },
+      "flaky" : false,
+      "parameters" : [ "GroupData{id=2147483647, groupName='GroupName_0', groupHeader='GroupHeader_0', groupFooter='GroupFooter_0'}" ]
+    }, {
+      "name" : "testGroupCreation",
+      "uid" : "83759c577e35e1ec",
+      "parentUid" : "0d344b1ca11c24d261aa2a2e0198f5f6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1549813050175,
+        "stop" : 1549813051089,
+        "duration" : 914
+      },
+      "flaky" : false,
+      "parameters" : [ "GroupData{id=2147483647, groupName='GroupName_1', groupHeader='GroupHeader_1', groupFooter='GroupFooter_1'}" ]
+    }, {
+      "name" : "testGroupCreation",
+      "uid" : "be1df2ffa33a874a",
+      "parentUid" : "0d344b1ca11c24d261aa2a2e0198f5f6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1549813051094,
+        "stop" : 1549813051996,
+        "duration" : 902
+      },
+      "flaky" : false,
+      "parameters" : [ "GroupData{id=2147483647, groupName='GroupName_2', groupHeader='GroupHeader_2', groupFooter='GroupFooter_2'}" ]
+    }, {
+      "name" : "testGroupCreation",
+      "uid" : "cabd1b5d75503485",
+      "parentUid" : "0d344b1ca11c24d261aa2a2e0198f5f6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1549813052003,
+        "stop" : 1549813052789,
+        "duration" : 786
+      },
+      "flaky" : false,
+      "parameters" : [ "GroupData{id=2147483647, groupName='GroupName_3', groupHeader='GroupHeader_3', groupFooter='GroupFooter_3'}" ]
+    }, {
+      "name" : "testGroupCreation",
+      "uid" : "b303914024972fe0",
+      "parentUid" : "0d344b1ca11c24d261aa2a2e0198f5f6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1549813052797,
+        "stop" : 1549813053634,
+        "duration" : 837
+      },
+      "flaky" : false,
+      "parameters" : [ "GroupData{id=2147483647, groupName='GroupName_4', groupHeader='GroupHeader_4', groupFooter='GroupFooter_4'}" ]
+    }, {
+      "name" : "testGroupCreationWithEmptyHeaderAndFooter",
+      "uid" : "511fb30da5724320",
+      "parentUid" : "0d344b1ca11c24d261aa2a2e0198f5f6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1549813053908,
+        "stop" : 1549813054543,
+        "duration" : 635
+      },
+      "flaky" : false,
+      "parameters" : [ "GroupData{id=0, groupName='GroupName_0', groupHeader='GroupHeader_0', groupFooter='GroupFooter_0'}" ]
+    }, {
+      "name" : "testGroupCreationWithEmptyHeaderAndFooter",
+      "uid" : "fddb186f3d84f16f",
+      "parentUid" : "0d344b1ca11c24d261aa2a2e0198f5f6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1549813054548,
+        "stop" : 1549813055162,
+        "duration" : 614
+      },
+      "flaky" : false,
+      "parameters" : [ "GroupData{id=0, groupName='GroupName_1', groupHeader='GroupHeader_1', groupFooter='GroupFooter_1'}" ]
+    } ],
+    "uid" : "ru.andrew.pft.addressbook.tests.GroupCreationTest"
+  } ]
+}

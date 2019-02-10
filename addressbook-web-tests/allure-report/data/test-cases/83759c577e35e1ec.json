@@ -1,0 +1,128 @@
+{
+  "uid" : "83759c577e35e1ec",
+  "name" : "testGroupCreation",
+  "fullName" : "ru.andrew.pft.addressbook.tests.GroupCreationTest.testGroupCreation",
+  "historyId" : "b827d94d77fa6ea89a1ef2f2419e545c",
+  "time" : {
+    "start" : 1549813050175,
+    "stop" : 1549813051089,
+    "duration" : 914
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ {
+    "name" : "logTestStart",
+    "time" : {
+      "start" : 1549813050173,
+      "stop" : 1549813050173,
+      "duration" : 0
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "setUp",
+    "time" : {
+      "start" : 1549813040045,
+      "stop" : 1549813046499,
+      "duration" : 6454
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "logTestStop",
+    "time" : {
+      "start" : 1549813051090,
+      "stop" : 1549813051090,
+      "duration" : 0
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "tearDown",
+    "time" : {
+      "start" : 1549813055177,
+      "stop" : 1549813055261,
+      "duration" : 84
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "ru.andrew.pft.addressbook.tests.GroupCreationTest"
+  }, {
+    "name" : "testClass",
+    "value" : "ru.andrew.pft.addressbook.tests.GroupCreationTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "testGroupCreation"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Suite1"
+  }, {
+    "name" : "suite",
+    "value" : "Groups"
+  }, {
+    "name" : "subSuite",
+    "value" : "ru.andrew.pft.addressbook.tests.GroupCreationTest"
+  }, {
+    "name" : "host",
+    "value" : "MacBook-Pro-Andrej.local"
+  }, {
+    "name" : "thread",
+    "value" : "2664@MacBook-Pro-Andrej.local.Test worker(10)"
+  }, {
+    "name" : "framework",
+    "value" : "testng"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "arg0",
+    "value" : "GroupData{id=2147483647, groupName='GroupName_1', groupHeader='GroupHeader_1', groupFooter='GroupFooter_1'}"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "83759c577e35e1ec.json",
+  "parameterValues" : [ "GroupData{id=2147483647, groupName='GroupName_1', groupHeader='GroupHeader_1', groupFooter='GroupFooter_1'}" ]
+}
