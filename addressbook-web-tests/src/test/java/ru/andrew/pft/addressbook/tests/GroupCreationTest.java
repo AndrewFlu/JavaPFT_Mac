@@ -78,7 +78,7 @@ public class GroupCreationTest extends TestBase {
   @Test
   public void testBadGroupCreation() {
     Groups before = app.db().groups();
-    GroupData badGroup = new GroupData().withName("test1");
+    GroupData badGroup = new GroupData().withName("test1'");
     app.goTo().groupPage();
     app.group().create(badGroup);
     assertThat(app.group().getGroupsCount(), equalTo(before.size()));
